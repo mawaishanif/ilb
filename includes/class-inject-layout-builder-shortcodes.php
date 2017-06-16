@@ -12,6 +12,10 @@ class Inject_Layout_Builder_Shortcodes
 
 		$this->shortcodes = array();
 
+		$this->load_core_scs();
+
+		$this->load_builder_scs();
+
 		add_action('plugins_loaded', array( $this, 'register_shortcodes' ));
 
 	}
@@ -29,8 +33,11 @@ class Inject_Layout_Builder_Shortcodes
 	public function load_builder_scs()
 	{
 		$builder_shortcodes = scandir(dirname( __FILE__ ) . '/shortcodes');
+
 		foreach ($builder_shortcodes as $sc) {
+
 			if(is_file(dirname((__FILE__) ) . '/shortcodes/' . $sc)){
+
 				include_once dirname((__FILE__) ) . '/shortcodes/' . $sc;
 			}
 		}

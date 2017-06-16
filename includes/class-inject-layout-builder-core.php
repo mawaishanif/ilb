@@ -225,6 +225,7 @@ class Inject_Layout_Builder_Core {
 	public function load_plugin_admin(){
 		$shortcodes = new Inject_Layout_Builder_Shortcodes;
 		$shortcodes-> load_builder_scs();
+		$shortcodes-> load_core_scs();
 		new Inject_Layout_Builder_Admin( $this->plugin_name, $this->version, $shortcodes);
 	}
 
