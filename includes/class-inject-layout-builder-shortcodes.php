@@ -12,6 +12,8 @@ class Inject_Layout_Builder_Shortcodes
 
 		$this->shortcodes = array();
 
+		add_action('edit_form_after_title', array($this, 'register_shortcodes'));
+
 	}
 	
 	public function load_core_scs()
@@ -32,6 +34,25 @@ class Inject_Layout_Builder_Shortcodes
 				include_once dirname((__FILE__) ) . '/shortcodes/' . $sc;
 			}
 		}
+	}
+
+	public function register_shortcodes()
+	{	
+
+		foreach ($this->shortcodes() as $name => $properties) {
+			if (isset($properties['nesting']) && $properties['nesting']!=''){
+				add_shortcode( $name.'_child', 'ABdevDND_'.$name.'_shortcode');
+				add_shortcode( str_replace('_dd', '_DD', $name).'_child', 'ABdevDND_'.str_replace('_dd', '_DD', $name).'_shortcode'); 
+			}
+		}
+
+	}
+
+	public function ABdevDND_extract_attributes ($shortcode) {
+		foreach($GLOBALS['ABdevDND_shortcodes'][$shortcode]['attributes'] as $att => $val){
+			$defaults[$att] = (isset($val['default'])) ? $val['default'] : '';
+		}
+		return $defaults;
 	}
 
 
