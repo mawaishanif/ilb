@@ -9,7 +9,7 @@
  *
  * @link              http://example.com
  * @since             1.0.0
- * @package           Plugin_Name
+ * @package           Inject Layout Builder
  *
  * @wordpress-plugin
  * Plugin Name:       Inject Layout Builder
@@ -76,8 +76,17 @@ function run_plugin_name() {
 }
 run_plugin_name();
 
-function play_button()
-{
-	echo '<p id="heyn">ha!</p><a id="play_button" href="#" class="button button-primary button-large">Play Button </a>';
+
+/**
+ * Inject Layout Builder Button
+ *
+ * @access public
+ * @since 1.0
+ * @param object $post The post.
+ */
+function button_before_main_editor( $post ) {
+
+	echo '<div class="hummer" style="text-align: right;"><a href="#" id="il_builder-trigger" class="button button-primary button-large">Inject Layout Builder</a></div>';
+
 }
-add_action( 'edit_form_after_title','play_button',999 );
+add_action( 'edit_form_after_title', 'button_before_main_editor', 999 );
