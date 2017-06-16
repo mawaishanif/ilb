@@ -7,10 +7,12 @@ class Inject_Layout_Builder_Shortcodes
 {
 	
 	private $shortcodes;
+	private $core_schortcodes;
 
 	function __construct() {
 
 		$this->shortcodes = array();
+		$this->core_schortcodes = array();
 
 		add_action('edit_form_after_title', array($this, 'register_shortcodes'));
 
@@ -18,8 +20,8 @@ class Inject_Layout_Builder_Shortcodes
 	
 	public function load_core_scs()
 	{
-		$core_schortcodes = scandir(dirname( __FILE__ ) . '/shortcodes/core');
-		foreach ($core_schortcodes as $sc) {
+		$this->core_schortcodes = scandir(dirname( __FILE__ ) . '/shortcodes/core');
+		foreach ($this->core_schortcodes as $sc) {
 			if(is_file(dirname((__FILE__) ) . '/shortcodes/core/' . $sc)){
 				include_once dirname((__FILE__) ) . '/shortcodes/core/' . $sc;
 			}
@@ -39,21 +41,25 @@ class Inject_Layout_Builder_Shortcodes
 	public function register_shortcodes()
 	{	
 
-		foreach ($this->shortcodes() as $name => $properties) {
-			if (isset($properties['nesting']) && $properties['nesting']!=''){
-				add_shortcode( $name.'_child', 'ABdevDND_'.$name.'_shortcode');
-				add_shortcode( str_replace('_dd', '_DD', $name).'_child', 'ABdevDND_'.str_replace('_dd', '_DD', $name).'_shortcode'); 
+		$all_scs = $this->shortcodes();
+
+		foreach ($all_scs as $shortcode => $params) {
+
+			if (empty($params['third_party']) || $params['third_party']!=1){
+
+				add_shortcode( $shortcode, 'ilb_'.$shortcode.'_sc');
+
+			}
+			if (isset($params['nesting']) && $params['nesting']!=''){
+
+				add_shortcode( $shortcode.'_child', 'ilb_'.$shortcode.'_sc');
+
 			}
 		}
 
 	}
 
-	public function ABdevDND_extract_attributes ($shortcode) {
-		foreach($GLOBALS['ABdevDND_shortcodes'][$shortcode]['attributes'] as $att => $val){
-			$defaults[$att] = (isset($val['default'])) ? $val['default'] : '';
-		}
-		return $defaults;
-	}
+	
 
 
 	public function shortcodes($data=false) {
@@ -70,6 +76,10 @@ class Inject_Layout_Builder_Shortcodes
 			}
 
 			return $all_scs;
+		}
+		if ( $data == 'registered') {
+				global $shortcode_tags;
+				return global $shortcode_tags;
 		}
 		if ($data) {
 
