@@ -76,6 +76,7 @@ function run_plugin_name() {
 }
 run_plugin_name();
 
+// load_plugin_textdomain('dnd-shortcodes', false, dirname(plugin_basename( __FILE__ )).'/languages/');
 
 /**
  * Inject Layout Builder Button
@@ -85,7 +86,6 @@ run_plugin_name();
  * @param object $post The post.
  */
 function button_before_main_editor( $post ) {
-
 	echo '<div class="hummer" style="text-align: right;"><a href="#" id="il_builder-trigger" class="button button-primary button-large">Inject Layout Builder</a></div>';
 
 }
