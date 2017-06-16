@@ -99,7 +99,7 @@ class Inject_Layout_Builder_Public {
 
 			wp_enqueue_script('dnd-shortcodes', ILB_DIR_URL. 'public/assets/'.'js/init.js', array('jquery', 'jquery-ui-accordion', 'jquery-ui-tabs', 'jquery-effects-slide', 'animo', 'google_maps_jquery', 'parallax', 'inview' , 'tipsy' , 'knob' , 'prettify'), $this->version, true);
 			wp_localize_script( 'dnd-shortcodes', 'dnd_options', array( 
-				'dnd_tipsy_opacity' => $dnd_tipsy_opacity, 
+				'dnd_tipsy_opacity' => '$dnd_tipsy_opacity', 
 			) );
 
 	}
