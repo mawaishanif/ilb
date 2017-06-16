@@ -32,7 +32,7 @@ $this->shortcodes['alert_box'] = array(
 	'description' => __('Alert Box', 'dnd-shortcodes' )
 );
 function ilb_alert_box_sc( $attributes, $content = null ) {
-	extract(shortcode_atts(ABdevDND_extract_attributes('alert_box'), $attributes));
+	extract(shortcode_atts($this->extract_sc_attributes('alert_box'), $attributes));
 	$allowed_styles = array('warning','error','info','success');
 	$style = (in_array($style, $allowed_styles)) ? $style : 'info';
 	$style_out = 'dnd_alert_' . $style;

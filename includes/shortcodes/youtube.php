@@ -47,7 +47,7 @@ $this->shortcodes['youtube'] = array(
 	'description' => __('Youtube Video Embed', 'dnd-shortcodes' )
 );
 function ilb_youtube_sc($attributes) {
-	extract(shortcode_atts(ABdevDND_extract_attributes('youtube'), $attributes));
+	extract(shortcode_atts($this->extract_sc_attributes('youtube'), $attributes));
 	
 	$options_output = '?autoplay='.$autoplay.'&amp;modestbranding='.$modestbranding.'&amp;controls='.$controls.'&amp;fs='.$fullscreen_button.'&amp;start='.$start.'&amp;end='.$end.'&amp;showinfo='.$showinfo.'&amp;rel='.$related;
 	

@@ -25,7 +25,7 @@ $this->shortcodes['visible'] = array(
 	'info' => __('This shortcode will make content visible only on selected devices, using @media css method', 'dnd-shortcodes' )
 );
 function ilb_visible_sc( $attributes, $content = null ) {
-	extract(shortcode_atts(ABdevDND_extract_attributes('visible'), $attributes));
+	extract(shortcode_atts($this->extract_sc_attributes('visible'), $attributes));
 
 	$classes='';
 	if($devices=='desktop')    $classes = 'visible-desktop';
