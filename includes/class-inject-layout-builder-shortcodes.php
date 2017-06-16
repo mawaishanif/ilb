@@ -7,14 +7,12 @@ class Inject_Layout_Builder_Shortcodes
 {
 	
 	private $shortcodes;
-	private $core_schortcodes;
 
 	function __construct() {
 
 		$this->shortcodes = array();
-		$this->core_schortcodes = array();
 
-		add_action('edit_form_after_title', array($this, 'register_shortcodes'));
+		add_action('plugins_loaded', array( $this, 'register_shortcodes' ));
 
 	}
 	
@@ -59,18 +57,22 @@ class Inject_Layout_Builder_Shortcodes
 
 	}
 
-	
+	public function extract_sc_attributes ( $shortcode ) {
+
+		foreach($this->shortcodes()[$shortcode]['attributes'] as $att => $val){
+
+			$defaults[$att] = (isset($val['default'])) ? $val['default'] : '';
+
+		}
+
+		return $defaults;
+	}
 
 
-	public function shortcodes($data=false) {
+	public function shortcodes( $data=false ) {
 		if ($data == 'names') {
 
 			foreach($this->shortcodes as $shortcode => $att){
-
-				// Preventing from adding core as shortcode name in the all shortcodes array.
-				if ($shortcode == 'core') {
-					continue;
-				}
 
 				$all_scs[$shortcode] = (isset($att['description'])) ? $att['description'] : '';
 			}
@@ -79,7 +81,7 @@ class Inject_Layout_Builder_Shortcodes
 		}
 		if ( $data == 'registered') {
 				global $shortcode_tags;
-				return global $shortcode_tags;
+				return $shortcode_tags;
 		}
 		if ($data) {
 
