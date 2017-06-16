@@ -41,7 +41,7 @@ $this->shortcodes['vimeo'] = array(
 	'description' => __('Vimeo Video', 'dnd-shortcodes' )
 );
 function ilb_vimeo_sc($attributes) {
-	extract(shortcode_atts(ABdevDND_extract_attributes('vimeo'), $attributes));
+	extract(shortcode_atts($this->extract_sc_attributes('vimeo'), $attributes));
 
 	$color = trim($color, '#');
 	

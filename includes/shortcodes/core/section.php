@@ -1,6 +1,6 @@
 <?php
 
-$this->shortcodes['core']['section'] = array(
+$this->shortcodes['section'] = array(
 	'hide_in_dnd' => true,
 	'nesting' => '1',
 	'child' => 'column',
@@ -56,7 +56,7 @@ $this->shortcodes['core']['section'] = array(
 	'info' => __("Sum of all column's span attributes must be 12", 'dnd-shortcodes' )
 );
 function ilb_section_sc( $attributes, $content = null ) {
-	extract(shortcode_atts(ABdevDND_extract_attributes('section'), $attributes));
+	extract(shortcode_atts($this->extract_sc_attributes('section'), $attributes));
 
 	$bg_color_output = ($bg_color!='')?'background-color:'.$bg_color.';' : '';
 	$bg_image_output = ($bg_image!='')?' data-background_image="'.$bg_image.'"' : '';

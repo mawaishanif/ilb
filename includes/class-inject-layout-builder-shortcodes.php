@@ -12,12 +12,18 @@ class Inject_Layout_Builder_Shortcodes
 
 		$this->shortcodes = array();
 
+		$this->load_core_scs();
+
+		$this->load_builder_scs();
+
+		add_action('plugins_loaded', array( $this, 'register_shortcodes' ));
+
 	}
 	
 	public function load_core_scs()
 	{
-		$core_schortcodes = scandir(dirname( __FILE__ ) . '/shortcodes/core');
-		foreach ($core_schortcodes as $sc) {
+		$this->core_schortcodes = scandir(dirname( __FILE__ ) . '/shortcodes/core');
+		foreach ($this->core_schortcodes as $sc) {
 			if(is_file(dirname((__FILE__) ) . '/shortcodes/core/' . $sc)){
 				include_once dirname((__FILE__) ) . '/shortcodes/core/' . $sc;
 			}
@@ -27,28 +33,62 @@ class Inject_Layout_Builder_Shortcodes
 	public function load_builder_scs()
 	{
 		$builder_shortcodes = scandir(dirname( __FILE__ ) . '/shortcodes');
+
 		foreach ($builder_shortcodes as $sc) {
+
 			if(is_file(dirname((__FILE__) ) . '/shortcodes/' . $sc)){
+
 				include_once dirname((__FILE__) ) . '/shortcodes/' . $sc;
 			}
 		}
 	}
 
+	public function register_shortcodes()
+	{	
 
-	public function shortcodes($data=false) {
+		$all_scs = $this->shortcodes();
+
+		foreach ($all_scs as $shortcode => $params) {
+
+			if (empty($params['third_party']) || $params['third_party']!=1){
+
+				add_shortcode( $shortcode, 'ilb_'.$shortcode.'_sc');
+
+			}
+			if (isset($params['nesting']) && $params['nesting']!=''){
+
+				add_shortcode( $shortcode.'_child', 'ilb_'.$shortcode.'_sc');
+
+			}
+		}
+
+	}
+
+	public function extract_sc_attributes ( $shortcode ) {
+
+		foreach($this->shortcodes()[$shortcode]['attributes'] as $att => $val){
+
+			$defaults[$att] = (isset($val['default'])) ? $val['default'] : '';
+
+		}
+
+		return $defaults;
+	}
+
+
+	public function shortcodes( $data=false ) {
 		if ($data == 'names') {
 
 			foreach($this->shortcodes as $shortcode => $att){
-
-				// Preventing from adding core as shortcode name in the all shortcodes array.
-				if ($shortcode == 'core') {
-					continue;
-				}
 
 				$all_scs[$shortcode] = (isset($att['description'])) ? $att['description'] : '';
 			}
 
 			return $all_scs;
+		}
+		if ( $data == 'registered') {
+				global $shortcode_tags;
+				return $shortcode_tags;
 		}
 		if ($data) {
 
