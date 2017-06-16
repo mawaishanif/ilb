@@ -1,6 +1,6 @@
 <?php
 
-$this->shortcodes['core']['column'] = array(
+$this->shortcodes['column'] = array(
 	'nesting' => '1',
 	'hidden' => '1',
 	'hide_in_dnd' => true,
