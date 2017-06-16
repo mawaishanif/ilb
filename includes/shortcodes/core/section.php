@@ -3,7 +3,7 @@
 $this->shortcodes['core']['section'] = array(
 	'hide_in_dnd' => true,
 	'nesting' => '1',
-	'child' => 'column_dd',
+	'child' => 'column',
 	'child_title' => __('Section Column', 'dnd-shortcodes'),
 	'child_button' => __('Add Column', 'dnd-shortcodes'),
 	'attributes' => array(
@@ -56,7 +56,7 @@ $this->shortcodes['core']['section'] = array(
 	'info' => __("Sum of all column's span attributes must be 12", 'dnd-shortcodes' )
 );
 function ilb_section_sc( $attributes, $content = null ) {
-	extract(shortcode_atts(ABdevDND_extract_attributes('section_dd'), $attributes));
+	extract(shortcode_atts(ABdevDND_extract_attributes('section'), $attributes));
 
 	$bg_color_output = ($bg_color!='')?'background-color:'.$bg_color.';' : '';
 	$bg_image_output = ($bg_image!='')?' data-background_image="'.$bg_image.'"' : '';
@@ -85,7 +85,7 @@ function ilb_section_sc( $attributes, $content = null ) {
 		</div>
 	</div>' : '';
 
-	return '<section'.$section_id.' class="dnd_section_dd '.$class.'"'.$bg_image_output.$parallax_output.' style="'.$bg_color_output.$background_output.'">
+	return '< section'.$section_id.' class="dnd_section_dd '.$class.'"'.$bg_image_output.$parallax_output.' style="'.$bg_color_output.$background_output.'">
 		'.$section_header.'
 		<div class="dnd_section_content"><div class="dnd_container">'.do_shortcode($content).'</div></div>
 		'.$section_footer.'
