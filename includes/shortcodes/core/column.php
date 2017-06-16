@@ -70,7 +70,7 @@ $this->shortcodes['core']['column'] = array(
 );
 
 function ilb_column_sc( $attributes, $content = null ) {
-	extract(shortcode_atts(ABdevDND_extract_attributes('column_dd'), $attributes));
+	extract(shortcode_atts(ABdevDND_extract_attributes('column'), $attributes));
 	$parametars_out='';
 	if($animation!=''){
 		$class.= ' dnd-animo';
