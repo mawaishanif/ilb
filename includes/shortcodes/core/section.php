@@ -1,60 +1,78 @@
+
 <?php
 
-$this->shortcodes['section'] = array(
-	'hide_in_dnd' => true,
-	'nesting' => '1',
-	'child' => 'column',
-	'child_title' => __('Section Column', 'dnd-shortcodes'),
-	'child_button' => __('Add Column', 'dnd-shortcodes'),
-	'attributes' => array(
-		'section_title' => array(
-			'description' => __('Section Title', 'dnd-shortcodes'),
-		),
-		'section_id' => array(
-			'description' => __('Section ID', 'dnd-shortcodes'),
-			'info' => __('ID can be used for menu navigation, e.g. #about-us', 'dnd-shortcodes'),
-		),
-		'section_intro' => array(
-			'description' => __('Intro Text', 'dnd-shortcodes'),
-		),
-		'section_outro' => array(
-			'description' => __('Outro Text', 'dnd-shortcodes'),
-		),
-		'class' => array(
-			'description' => __('Class', 'dnd-shortcodes'),
-			'info' => __('Additional custom classes for custom styling', 'dnd-shortcodes'),
-		),
-		'fullwidth' => array(
-			'description' => __('Fullwidth Content', 'dnd-shortcodes'),
-			'type' => 'checkbox',
-			'default' => '0',
-		),
-		'bg_color' => array(
-			'description' => __('Background Color', 'dnd-shortcodes'),
-			'type' => 'color',
-		),
-		'bg_image' => array(
-			'type' => 'image',
-			'description' => __('Background Image', 'dnd-shortcodes'),
-		),
-		'parallax' => array(
-			'description' => __('Parallax Amount', 'dnd-shortcodes'),
-			'info' => __('Amout of parallax effect on background image, 0.1 means 10% of scroll amount, 2 means twice of scroll amount, leave blank for no parallax', 'dnd-shortcodes'),
-		),
-		'video_bg' => array(
-			'description' => __('Video Background', 'dnd-shortcodes'),
-			'type' => 'checkbox',
-			'default' => '0',
-			'info' => __('If checked video background will be enabled. Video files should have same name as Background Image, and same path, only different extensions (mp4,webm,ogv files required). You can use Miro Converter to convert files in required formats.', 'dnd-shortcodes'),
-		),
-	),
-	'content' => array(
-		'default' => 'Columns here',
-		'description' => __('Content', 'dnd-shortcodes'),
-	),
-	'description' => __('Section With Columns', 'dnd-shortcodes'),
-	'info' => __("Sum of all column's span attributes must be 12", 'dnd-shortcodes' )
-);
+
+class Section extends Inject_Layout_Builder_Shortcodes
+{
+	
+	// public $shortcodes;
+
+	function __construct()
+	{
+		$this->sc_properties();
+		$this->register_shortcodes();
+	}
+
+public function sc_properties()
+{
+	$this->shortcodes['section'] = array(
+			'hide_in_dnd' => true,
+			'nesting' => '1',
+			'child' => 'column',
+			'child_title' => __('Section Column', 'dnd-shortcodes'),
+			'child_button' => __('Add Column', 'dnd-shortcodes'),
+			'attributes' => array(
+				'section_title' => array(
+					'description' => __('Section Title', 'dnd-shortcodes'),
+				),
+				'section_id' => array(
+					'description' => __('Section ID', 'dnd-shortcodes'),
+					'info' => __('ID can be used for menu navigation, e.g. #about-us', 'dnd-shortcodes'),
+				),
+				'section_intro' => array(
+					'description' => __('Intro Text', 'dnd-shortcodes'),
+				),
+				'section_outro' => array(
+					'description' => __('Outro Text', 'dnd-shortcodes'),
+				),
+				'class' => array(
+					'description' => __('Class', 'dnd-shortcodes'),
+					'info' => __('Additional custom classes for custom styling', 'dnd-shortcodes'),
+				),
+				'fullwidth' => array(
+					'description' => __('Fullwidth Content', 'dnd-shortcodes'),
+					'type' => 'checkbox',
+					'default' => '0',
+				),
+				'bg_color' => array(
+					'description' => __('Background Color', 'dnd-shortcodes'),
+					'type' => 'color',
+				),
+				'bg_image' => array(
+					'type' => 'image',
+					'description' => __('Background Image', 'dnd-shortcodes'),
+				),
+				'parallax' => array(
+					'description' => __('Parallax Amount', 'dnd-shortcodes'),
+					'info' => __('Amout of parallax effect on background image, 0.1 means 10% of scroll amount, 2 means twice of scroll amount, leave blank for no parallax', 'dnd-shortcodes'),
+				),
+				'video_bg' => array(
+					'description' => __('Video Background', 'dnd-shortcodes'),
+					'type' => 'checkbox',
+					'default' => '0',
+					'info' => __('If checked video background will be enabled. Video files should have same name as Background Image, and same path, only different extensions (mp4,webm,ogv files required). You can use Miro Converter to convert files in required formats.', 'dnd-shortcodes'),
+				),
+			),
+			'content' => array(
+				'default' => 'Columns here',
+				'description' => __('Content', 'dnd-shortcodes'),
+			),
+			'description' => __('Section With Columns', 'dnd-shortcodes'),
+			'info' => __("Sum of all column's span attributes must be 12", 'dnd-shortcodes' )
+		);
+	return $this->shortcodes;
+}
+
 function ilb_section_sc( $attributes, $content = null ) {
 	extract(shortcode_atts($this->extract_sc_attributes('section'), $attributes));
 
@@ -92,3 +110,8 @@ function ilb_section_sc( $attributes, $content = null ) {
 		'.$video_out.'
 	</section>';
 }
+
+
+}
+
+new Section();
