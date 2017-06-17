@@ -1,7 +1,8 @@
 jQuery(document).ready(function($) {
 
-
-	$("#play_button").click(function(e){
+$(".wp-heading-inline").before('<a id="heyaa" href="#45" class="button button-primary button-large">HELLO WORLD BUTTON</a>');
+$(".wp-heading-inline").before('<div id="responser"></div>');
+	$("#heyaa").click(function(e){
 
 		e.preventDefault();
 
@@ -17,7 +18,7 @@ jQuery(document).ready(function($) {
 			if (response.success == true) {
 				// console.log("Successfully request sent");
 				// console.log(response);
-				$("#heyn").html(response['data']);
+				$("#responser").html(response['data']);
 			}
 			else {
 				// console.log("Request could not be sent Successfully");
