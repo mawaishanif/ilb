@@ -107,7 +107,9 @@ class Inject_Layout_Builder_Admin {
 
 		wp_enqueue_script('dnd-shortcodes-cookie', ILB_DIR_URL. 'admin/assets/' .'js/jquery.cookie.js', array('jquery'), $this->version);
 		
-		wp_enqueue_script('dnd-shortcodes-ddtab', ILB_DIR_URL. 'admin/assets/' .'js/ddtab.js', array('dnd-shortcodes-mCustomScrollbar', 'dnd-cleditor', 'wp-color-picker','jquery-ui-sortable','jquery-ui-resizable','dnd-shortcodes-fancybox'), $this->version,true);
+		wp_enqueue_script('dnd-modalBox', ILB_DIR_URL. 'admin/assets/' .'js/modalBox.js', array('jquery'), $this->version);
+
+		wp_enqueue_script('dnd-shortcodes-ddtab', ILB_DIR_URL. 'admin/assets/' .'js/ddtab.js', array('dnd-modalBox', 'dnd-shortcodes-mCustomScrollbar', 'dnd-cleditor', 'wp-color-picker','jquery-ui-sortable','jquery-ui-resizable','dnd-shortcodes-fancybox'), $this->version,true);
 
 		wp_localize_script('dnd-shortcodes-ddtab', 'dnd_from_WP', array(
 			'plugins_url' => plugins_url('inject-layout-builder'),

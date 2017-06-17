@@ -394,6 +394,7 @@ $(window).resize(function() {
 
 
 
+
 /**
  * jQuery.browser.mobile (http://detectmobilebrowser.com/)
  *

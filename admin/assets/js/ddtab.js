@@ -6,11 +6,6 @@ jQuery(document).ready(function($) {
 
 
 
-
-
-
-
-
 /*=============================================
 =            ALL BUILDER FUNCTIONS            =
 =============================================*/
@@ -21,8 +16,8 @@ function toggle_builder(){
 
 
 		$dd_tab_content.hide();
-		$dd_shortcode_button.show();
-		$("#postdivrich").show();
+		$("#wp-content-editor-container").show();
+		$("#wp-content-editor-tools").css('visibility', 'visible');
 
 		dom.addClass('wp-content-wrap', 'tmce-active');
 		$.removeCookie('dnd_dd_activated', { path: '/' });
@@ -30,9 +25,9 @@ function toggle_builder(){
 	}else{
 
 		$builder_launcher.text('Back to WP Editor')
-		$("#postdivrich").hide();
+		$("#wp-content-editor-container").hide();
+		$("#wp-content-editor-tools").css('visibility', 'hidden');
 		$dd_tab_content.show();
-		$dd_shortcode_button.hide();
 		dom.removeClass('wp-content-wrap', 'html-active');
 		dom.removeClass('wp-content-wrap', 'tmce-active');
 		$builder_launcher.addClass('active_builder');
@@ -45,9 +40,9 @@ function toggle_builder(){
 function activate_from_cookie() {
 
 	$builder_launcher.text('Back to WP Editor')
-	$("#postdivrich").hide();
+	$("#wp-content-editor-container").hide();
+	$("#wp-content-editor-tools").css('visibility', 'hidden');
 	$dd_tab_content.show();
-	$dd_shortcode_button.hide();
 	dom.removeClass('wp-content-wrap', 'html-active');
 	dom.removeClass('wp-content-wrap', 'tmce-active');
 	$builder_launcher.addClass('active_builder');
@@ -458,30 +453,13 @@ function trim(str, charlist) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //============APPENDING EMPTY TEMPLATE OF BUILDER============================
 
-	$("#postdivrich").after('<div id="dnd_dragdrop"><div id="dnd_tools"></div></div>');
+$("#wp-content-editor-container").after('<div id="dnd_dragdrop"><div id="dnd_tools"></div></div>');
 
-	$("#dnd_dragdrop").append('<div id="dnd_dragdrop_empty"><br><a id="dnd_add_section_second">'+dnd_from_WP.add_section+'</a></div>');
-	
-	$("#insert-media-button").after('<a id="dnd_shortcode_button" class="button insert-shortcode" title="'+dnd_from_WP.add_edit_shortcode+'">'+dnd_from_WP.add_edit_shortcode+'</a>');
+$("#dnd_dragdrop").append('<div id="dnd_dragdrop_empty"><br><a id="dnd_add_section_second">'+dnd_from_WP.add_section+'</a></div>');
+
+$("#insert-media-button").after('<a id="dnd_shortcode_button" class="button insert-shortcode" title="'+dnd_from_WP.add_edit_shortcode+'">'+dnd_from_WP.add_edit_shortcode+'</a>');
 //=====================================================================
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -494,35 +472,35 @@ function trim(str, charlist) {
 /*=============================================
 =            VARIABLES            =
 =============================================*/
-	
-	var scrollbar_options = {
-		theme:'dark-thin',
-		mouseWheelPixels: 100,
-		scrollInertia: 500
-	};
 
-	var fancybox_options = {
-		'width':'95%',
-		'height':'100%',
-		'scrolling':'no',
-		'autoDimensions':false,
-		'transitionIn':'none',
-		'transitionOut':'none',
-		'type':'ajax',
-		'titleShow':false,
-		'onComplete':function(){
-			$('.dnd-colorpicker').wpColorPicker();
-			setTimeout(function(){
-				$(".textarea_cleditor").cleditor().each(function(){
-					$('#dnd_edit_shortcode_wrapper').mCustomScrollbar("update");
-				});
-			},100);
-			$("#dnd_shortcodes_list .dnd_select_shortcode").filter(":even").addClass('even');
-			$('#dnd_shortcode_selector .clear_field').hide();
-			$('#dnd_shortcodes_list').css('height', '-=40px').mCustomScrollbar(scrollbar_options);
-			$('#dnd_edit_shortcode_wrapper').mCustomScrollbar(scrollbar_options);
-		}
-	};
+var scrollbar_options = {
+	theme:'dark-thin',
+	mouseWheelPixels: 100,
+	scrollInertia: 500
+};
+
+var fancybox_options = {
+	'width':'95%',
+	'height':'100%',
+	'scrolling':'no',
+	'autoDimensions':false,
+	'transitionIn':'none',
+	'transitionOut':'none',
+	'type':'ajax',
+	'titleShow':false,
+	'onComplete':function(){
+		$('.dnd-colorpicker').wpColorPicker();
+		setTimeout(function(){
+			$(".textarea_cleditor").cleditor().each(function(){
+				$('#dnd_edit_shortcode_wrapper').mCustomScrollbar("update");
+			});
+		},100);
+		$("#dnd_shortcodes_list .dnd_select_shortcode").filter(":even").addClass('even');
+		$('#dnd_shortcode_selector .clear_field').hide();
+		$('#dnd_shortcodes_list').css('height', '-=40px').mCustomScrollbar(scrollbar_options);
+		$('#dnd_edit_shortcode_wrapper').mCustomScrollbar(scrollbar_options);
+	}
+};
 
 
 	// BUTTON that will trigger/toggle  builder - button came from WP add_action
@@ -531,16 +509,13 @@ function trim(str, charlist) {
 	// MAIN BUILDER CONTAINER that contains all dragable elements
 	var $dd_tab_content = $("#dnd_dragdrop");
 
-	// BUTTONS BAR that is appending on top of MAIN BUILDER CONTAINER
+	// TOP BAR that is appending on top of MAIN BUILDER CONTAINER
 	var $dd_tab_tools = $("#dnd_tools");
-
-	// BUTTON that will appear only when the user is using WP_EDITOR, used to add shortcodes without drag'n'drop functionality
-	var $dd_shortcode_button = $("#dnd_shortcode_button");
 
 	// it refers to both VISUAL and TEXT editors of  WP
 	var dom = tinymce.DOM;
 
-/*=====  End of VARIABLES  ======*/
+	/*=====  End of VARIABLES  ======*/
 
 
 
@@ -553,15 +528,19 @@ function trim(str, charlist) {
 /*=================================================
 =            FIRST TIME INITIALIZATION            =
 =================================================*/
-	
+
 	// setting the height of Drag'n'drop builder 
-	$dd_tab_content.css('minHeight',$("#postdivrich .wp-editor-area").height()+60+'px');
-	//hiding it until the user choose to build layouts
+	$dd_tab_content.css('minHeight',$("#wp-content-editor-container .wp-editor-area").height()+60+'px');
+	//hiding it until the user choose to build layouts with this builder
 	$dd_tab_content.hide();
 
-	// Creating BUTTONS BAR that will c
-	$dd_tab_tools.append('<input type="button" id="dnd_add_section" class="dnd_button" title="" value="'+dnd_from_WP.add_section+'">');
+	// Creating a TOP BAR that can contain buttons or headings stuff
+	$dd_tab_tools.append('<button data-component="modal" data-target="#my-modal" id="open_it_up" class="dnd_button" title="" >Open it up!</button>');
+	
+	// creating this tag for temporary holding created element stuff
 	$dd_tab_tools.append('<p id="dnd_temp" style="display:none;"></p>');
+
+	// button at the bottom of container that let user add new container
 	$dd_tab_tools.append('<a id="dnd_add_section_bottom">'+dnd_from_WP.add_section+'</a>');
 	$dd_tab_content.sortable({ 
 		items: "> .dnd_content_section", 
@@ -576,9 +555,10 @@ function trim(str, charlist) {
 		},
 		over: rebuild_widths
 	});
+	// preventing user to select text and stuff..because the stuff inside of it is draggable
 	$dd_tab_content.disableSelection();
 
-/*=====  End of FIRST TIME INITIALIZATION  ======*/
+	/*=====  End of FIRST TIME INITIALIZATION  ======*/
 
 
 
@@ -595,62 +575,35 @@ function trim(str, charlist) {
 
 
 
-
+	// Checking if user was already  using our builder then show up the Builder instead of WP_editor
 	if($.cookie('dnd_dd_activated') === 'activated'){
 		$("#wp-content-editor-tools").hide();
 		activate_from_cookie();
 	}
 
+	// Launch the builder if it's not currently open or close it because user want's to go back - ITS A TOGGLER
 	$builder_launcher.click(function(e){
 		e.preventDefault();
 		toggle_builder();
 	});
 
 
-
-	$dd_shortcode_button.click(function(e){
-		e.preventDefault();
-		var selected_content = '';
-		if($('#wp-content-wrap').hasClass('tmce-active')){
-			selected_content = tinyMCE.activeEditor.selection.getContent({format : 'html'});
-		}
-		else{
-			var textComponent = document.getElementById('content');
-			if (document.selection !== undefined){
-				textComponent.focus();
-				var sel = document.selection.createRange();
-				selected_content = sel.text;
-			}
-			else if (textComponent.selectionStart !== undefined){
-				var startPos = textComponent.selectionStart;
-				var endPos = textComponent.selectionEnd;
-				selected_content = textComponent.value.substring(startPos, endPos);
-			}
-		}
-		selected_content = selected_content.replace(/(\r\n|\n|\r|\t)/gm,'').replace(/\s+/g,' ').replace(/<br \/> /g,'').replace(/\]\s\[/g,'][');
-
-		var exploded = selected_content.split(' ');
-		exploded = exploded[0].split(']');
-		var shortcode = exploded[0].substring(1);
-		selected_content = htmlspecialchars(selected_content,'ENT_QUOTES');
-		selected_content = encodeURIComponent(selected_content);
-		
-		if(shortcode===''){
-			fancybox_options.href = dnd_from_WP.plugins_url + '/admin/shortcode_selector.php?editor=text';
-			$.fancybox(fancybox_options);
-		}
-		else{
-			fancybox_options.href = dnd_from_WP.plugins_url + '/admin/shortcode_attributes.php?action=edit&shortcode='+shortcode+'&selected_content=' + selected_content;
-			$.fancybox(fancybox_options);
-
-		}
-	});
-
-
+	// If add section from bottom OR from where it is empty ..clicked...it will add section with buttons to add elements and remove empty section bcoz it is no long empty
 	$("#dnd_add_section_second, #dnd_add_section_bottom").click(function(e){
 		e.preventDefault();
 		$("#dnd_dragdrop_empty").hide();
-		$dd_tab_content.append('<div class="dnd_content_section"><span class="dnd_section_handler" title="'+dnd_from_WP.rearange_sections+'"></span><span class="dnd_section_delete" title="'+dnd_from_WP.delete_section+'"></span><span class="dnd_section_duplicate" title="'+dnd_from_WP.duplicate_section+'"></span><span class="dnd_section_edit" title="'+dnd_from_WP.edit_section+'"></span><span class="dnd_remove_column dnd_disabled" title="'+dnd_from_WP.remove_column+'"></span><span class="dnd_add_column" title="'+dnd_from_WP.add_column+'"></span><div class="dnd_column" data-column_span="12"><span class="dnd_add_element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span><p>12/12</p></div></div>');
+		$dd_tab_content.append('<div class="dnd_content_section">'
+		                       +'<span class="dnd_section_handler" title="'+dnd_from_WP.rearange_sections+'"></span>'
+		                       +'<span class="dnd_section_delete" title="'+dnd_from_WP.delete_section+'"></span>'
+		                       +'<span class="dnd_section_duplicate" title="'+dnd_from_WP.duplicate_section+'"></span>'
+		                       +'<span class="dnd_section_edit" title="'+dnd_from_WP.edit_section+'"></span>'
+		                       +'<span class="dnd_remove_column dnd_disabled" title="'+dnd_from_WP.remove_column+'"></span>'
+		                       +'<span class="dnd_add_column" title="'+dnd_from_WP.add_column+'"></span>'
+		                       +'<div class="dnd_column" data-column_span="12">'
+		                       	+'<span class="dnd_add_element" title="'+dnd_from_WP.add_element+'"></span>'
+		                       	+'<span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span>'
+		                       	+'<p>12/12</p>'
+		                       +'</div></div>');
 		make_elements_sortable();
 		rebuild_widths();
 		write_to_editor();
@@ -1134,6 +1087,8 @@ $(window).load(function() {
 	rebuild_widths();
 });
 
+  // $("#poststuff").before('<div id="my-modal" class="modal-box display-none"><div class="modal-wrapper"><div><div class="modal"><span class="close"></span><div class="modal-header">Modal Header</div><div class="modal-body"><p class="full-width">Your bones don\'t break, mine do. That\'s clear. Your cells react to bacteria and viruses differently than mine. You don\'t get sick, I do. That\'s also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We\'re on the same curve, just on opposite ends. Your bones don\'t break, mine do. That\'s clear. Your cells react to bacteria and viruses differently than mine. You don\'t get sick, I do. That\'s also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We\'re on the same curve, just on opposite ends. </p></div>	</div></div></div></div>');
+
+  // modal('[data-component="modal"]');
 
 });
-

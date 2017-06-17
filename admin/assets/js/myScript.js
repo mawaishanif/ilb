@@ -8,8 +8,8 @@ jQuery(document).ready(function($) {
 		var userData = 'I am working';
 
 		var data = {
-		action: 'builder_admin_layout',
-		data: userData
+			action: 'builder_admin_layout',
+			data: userData
 		};
 
 		$.post(ajaxurl, data, function(response) {
@@ -24,4 +24,5 @@ jQuery(document).ready(function($) {
 			}
 		});
 	}) 
+
 });
