@@ -111,7 +111,7 @@ class Inject_Layout_Builder_Admin {
 
 		wp_localize_script('dnd-shortcodes-ddtab', 'dnd_from_WP', array(
 			'plugins_url' => plugins_url('inject-layout-builder'),
-			'ABdevDND_shortcode_names' => $this->shortcodes->shortcodes('names'),
+			'ABdevDND_shortcode_names' => $this->shortcodes->shortcodes('registered'),
 			'save' => __('Save', 'dnd-shortcodes'),
 			'error_to_editor' => __('<b>Content cannot be parsed</b><br>Please use Text tab instead or Revisions option to undo recently made changes.<br><br>Check the syntax:<br>- Use double quotes for attributes<br>- Every shortcode must be closed. e.g. [gallery ids="1,20"] should be [gallery ids="1,20"][/gallery]', 'dnd-shortcodes'),
 			'delete_section' => __('Delete Section', 'dnd-shortcodes'),
