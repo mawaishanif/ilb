@@ -6,42 +6,16 @@
 class Inject_Layout_Builder_Shortcodes	
 {
 	
-	private $shortcodes;
+	protected $shortcodes;
 
 	function __construct() {
 
 		$this->shortcodes = array();
 
-		$this->load_core_scs();
-
-		$this->load_builder_scs();
-
-		add_action('plugins_loaded', array( $this, 'register_shortcodes' ));
+		// add_action( 'edit_form_after_title', array( $this, 'debug_panel' ), 999 );
 
 	}
 	
-	public function load_core_scs()
-	{
-		$this->core_schortcodes = scandir(dirname( __FILE__ ) . '/shortcodes/core');
-		foreach ($this->core_schortcodes as $sc) {
-			if(is_file(dirname((__FILE__) ) . '/shortcodes/core/' . $sc)){
-				include_once dirname((__FILE__) ) . '/shortcodes/core/' . $sc;
-			}
-		}
-	}
-
-	public function load_builder_scs()
-	{
-		$builder_shortcodes = scandir(dirname( __FILE__ ) . '/shortcodes');
-
-		foreach ($builder_shortcodes as $sc) {
-
-			if(is_file(dirname((__FILE__) ) . '/shortcodes/' . $sc)){
-
-				include_once dirname((__FILE__) ) . '/shortcodes/' . $sc;
-			}
-		}
-	}
 
 	public function register_shortcodes()
 	{	
@@ -52,12 +26,12 @@ class Inject_Layout_Builder_Shortcodes
 
 			if (empty($params['third_party']) || $params['third_party']!=1){
 
-				add_shortcode( $shortcode, 'ilb_'.$shortcode.'_sc');
+				add_shortcode( $shortcode, array( $this, 'ilb_' . $shortcode .'_sc' ) );
 
 			}
 			if (isset($params['nesting']) && $params['nesting']!=''){
 
-				add_shortcode( $shortcode.'_child', 'ilb_'.$shortcode.'_sc');
+				add_shortcode( $shortcode.'_child', array( $this, 'ilb_' . $shortcode . '_sc' ));
 
 			}
 		}
@@ -78,7 +52,7 @@ class Inject_Layout_Builder_Shortcodes
 
 	public function shortcodes( $data=false ) {
 		if ($data == 'names') {
-
+			$all_scs = array();
 			foreach($this->shortcodes as $shortcode => $att){
 
 				$all_scs[$shortcode] = (isset($att['description'])) ? $att['description'] : '';
@@ -88,7 +62,19 @@ class Inject_Layout_Builder_Shortcodes
 		}
 		if ( $data == 'registered') {
 				global $shortcode_tags;
-				return $shortcode_tags;
+				// Unset the wordpress shortcodes from the array.
+				  $array_to_remove = array(
+				  	"wp_caption" => "img_caption_shortcode",
+				  	"caption" => "img_caption_shortcode",
+				  	"gallery" => "gallery_shortcode",
+				  	"playlist" => "wp_playlist_shortcode",
+				  	"audio" => "wp_audio_shortcode",
+				  	"video" => "wp_video_shortcode",
+				  	"embed" => "__return_false");
+
+				$ilb_registered_shortcodes = array_diff( $shortcode_tags , $array_to_remove);
+				
+				return $ilb_registered_shortcodes;
 		}
 		if ($data) {
 
@@ -98,6 +84,11 @@ class Inject_Layout_Builder_Shortcodes
 
 		// If we have reached this far, return the whole array of shortcodes.
 		return $this->shortcodes;
+	}
+
+	function debug_panel( $post ) {
+		global $shortcode_tags;
+		echo '<pre>', print_r($shortcode_tags) ,'</pre>';
 	}
 
 }

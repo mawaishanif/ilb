@@ -104,10 +104,9 @@ class Inject_Layout_Builder_Core {
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * The class responsible for shortcodes related data and logic
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-inject-layout-builder-shortcodes.php';
+		// Loading ShortCodes dependencies:
+		
+		$this->shortcode_dependenices();
 
 		/**
 		 * The class responsible for defining internationalization functionality
@@ -124,8 +123,6 @@ class Inject_Layout_Builder_Core {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-inject-layout-builder-public.php';
-
-		// $this->loader = new Grime_Core_Loader();
 
 	}
 
@@ -144,51 +141,6 @@ class Inject_Layout_Builder_Core {
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
-	}
-
-	/**
-	 * Register all of the hooks related to the admin area functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_admin_hooks() {
-
-		$grime_core_admin = new Grime_Core_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $grime_core_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $grime_core_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $grime_core_admin, 'grime_custom_post_types' );
-		$this->loader->add_action( 'add_meta_boxes', $grime_core_admin,'grime_meta_box' );
-		// $this->loader->add_action( 'save_post', 'display_grime_volunteer_meta_box', 10, 2 );
-
-
-	}
-
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new Grime_Core_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
-	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    1.0.0
-	 */
-	public function run() {
-		$this->loader->run();
 	}
 
 	/**
@@ -223,15 +175,51 @@ class Inject_Layout_Builder_Core {
 	}
 
 	public function load_plugin_admin(){
+
 		$shortcodes = new Inject_Layout_Builder_Shortcodes;
-		$shortcodes-> load_builder_scs();
-		$shortcodes-> load_core_scs();
+		
+		// echo '<pre>',var_dump($shortcodes->shortcodes('registered')['column'][0]->sc_properties()),'</pre>';
+		// foreach ($shortcodes->shortcodes('registered') as $name => $properties) {
+			
+			// echo '<pre>', $name, '</pre>';
+			// echo '<pre>', var_dump($properties[0]->sc_properties()[$name]['child']), '</pre>';	
+		// }
+
 		new Inject_Layout_Builder_Admin( $this->plugin_name, $this->version, $shortcodes);
 	}
 
 	public function load_public()
 	{
 		new Inject_Layout_Builder_Public($this->plugin_name, $this->version);
+	}
+
+
+	private function shortcode_dependenices()
+	{
+		// Load Main class for Shortcodes
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-inject-layout-builder-shortcodes.php';
+
+		// Loading Core Shortcode Classes First.
+		$core_schortcodes = scandir(dirname( __FILE__ ) . '/shortcodes/core');
+
+		foreach ($core_schortcodes as $sc) {
+
+			if(is_file(dirname((__FILE__) ) . '/shortcodes/core/' . $sc)){
+
+				include_once dirname((__FILE__) ) . '/shortcodes/core/' . $sc;
+			}
+		}
+
+		// Loading Builder Shortcode classes
+		$builder_shortcodes = scandir(dirname( __FILE__ ) . '/shortcodes');
+
+		foreach ($builder_shortcodes as $sc) {
+
+			if(is_file(dirname((__FILE__) ) . '/shortcodes/' . $sc)){
+
+				require_once dirname((__FILE__) ) . '/shortcodes/' . $sc;
+			}
+		}
 	}
 
 }
