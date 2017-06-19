@@ -4,15 +4,22 @@
 $editor=(isset($_GET['editor']) && $_GET['editor']!='') ? $_GET['editor'] : 'dnd';
 
 
-
-$data = '<div id="dnd_shortcode_selector">
-	<input type="text" id="dnd_shortcode_selector_filter" placeholder="'. __("Search Here", "inject-builder") .'"><span class="clear_field"></span>
-	<ul id="dnd_shortcodes_list">';
+$data = '
+<div class="il_shortcode_info col-lg-8">
+	<p>'. __( "Search or pick a shortcode from the list. To edit shortcode highlight shortcode in editor before clicking (Add/Edit Shortcode) button.", "inject-builder") .'</p>
+</div>
+<div class="col-lg-4 ilb_search_shortcode">
+<div class="form-item">
+          <input type="search" name="shortcode_search" placeholder="'. __("Search for element", "inject-builder") .'" id="shortcode_search">
+     </div>
+</div>
+<div class="col-lg-12 ilb_shortcode_display">
+	<ul id="ilb_element_list" class="row">';
 
 
 		foreach ( $this->shortcodes->shortcodes('registered') as $name => $shortcode ) {
 			$index_name = str_replace('_child', '', $name);
-			// $shortcode[0]->sc_properties()[$name]['child']
+
 			if ( (!isset($shortcode[0]->sc_properties()[$index_name]['hidden']) || (isset($shortcode[0]->sc_properties()[$index_name]['hidden']) && $shortcode[0]->sc_properties()[$index_name]['hidden'] != '1' )) && !($editor=='dnd' && (isset($shortcode[0]->sc_properties()[$index_name]['hide_in_dnd']) && $shortcode[0]->sc_properties()[$index_name]['hide_in_dnd'])))
 
 			{
@@ -21,15 +28,30 @@ $data = '<div id="dnd_shortcode_selector">
 
 				$description = (isset($shortcode['description'])) ? $shortcode['description'] : $prettifed_name;
 
-				// $test = (isset($shortcode[0]->sc_properties()[$index_name]['hidden'])) ? $shortcode[0]->sc_properties()[$index_name]['hidden'] : 'nothing found';
-
-				$data .= '<li class="dnd_select_shortcode" data-shortcode="'.$name.'"><span class="item-title">' . $description . '</span><span class="item-info">[' . $name . ']'.$child_name.'</span></li>';
+				$data .= '<li class="ilb_shortcode_element col-lg-2" data-shortcode="'.$name.'"><div class="shortcode-single-element">
+						<div class="shortcode-image">
+							<img src="http://localhost/wordpress/wp-content/plugins/ilb/admin/assets/placeholder.jpg" alt="">
+						</div>
+						<div class="ilb_element_meta">
+						<h3 class="item-title">' . $description . '</h3>
+						<h4 class="item-info">This is a description of shortcode element</h4>
+						</div></div></li><li class="ilb_shortcode_element col-lg-2" data-shortcode="'.$name.'"><div class="shortcode-single-element">
+						<div class="shortcode-image">
+							<img src="http://localhost/wordpress/wp-content/plugins/ilb/admin/assets/placeholder.jpg" alt="">
+						</div>
+						<div class="ilb_element_meta">
+						<h3 class="item-title">' . $description . '</h3>
+						<h4 class="item-info">This is a description of shortcode element</h4>
+						</div></div></li><li class="ilb_shortcode_element col-lg-2" data-shortcode="'.$name.'"><div class="shortcode-single-element">
+						<div class="shortcode-image">
+							<img src="http://localhost/wordpress/wp-content/plugins/ilb/admin/assets/placeholder.jpg" alt="">
+						</div>
+						<div class="ilb_element_meta">
+						<h3 class="item-title">' . $description . '</h3>
+						<h4 class="item-info">This is a description of shortcode element</h4>
+						</div></div></li>';
 			}
 		}
 
-$data .='</ul>
-</div>
-<div id="dnd_shortcode_attributes">
-	<p id="dnd_initial_message">'. __( "Search or pick a shortcode from the list.<br><br>To edit shortcode highlight shortcode in editor before clicking (Add/Edit Shortcode) button.", "inject-builder") .'</p>
-</div>';
+$data .='</ul></div>';
 

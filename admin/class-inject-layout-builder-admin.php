@@ -90,12 +90,18 @@ class Inject_Layout_Builder_Admin {
 		wp_enqueue_style('dnd-shortcodes-mCustomScrollbar', ILB_DIR_URL. 'admin/assets/' .'css/jquery.mCustomScrollbar.css', array(), $this->version);
 
 		wp_enqueue_style('dnd-shortcodes-ddtab', ILB_DIR_URL. 'admin/assets/' .'css/ddtab.css', array(), $this->version);
+		
+		wp_enqueue_style('ilb_builder_fonts', ILB_DIR_URL. 'admin/assets/' .'css/all-fonts.css', array(), $this->version);
+
+		wp_enqueue_style('ilb_shortcode_styles', ILB_DIR_URL. 'admin/assets/' .'css/ilb_shortcode.css', array(), $this->version);
 
 		wp_enqueue_media();
 
 		wp_enqueue_script('thickbox');
 
 		wp_enqueue_script('dnd-shortcodes-fancybox', ILB_DIR_URL. 'admin/assets/' .'js/jquery.fancybox-1.3.4.js', array('jquery'), $this->version);
+
+		wp_enqueue_script('my-custom-script', ILB_DIR_URL. 'admin/assets/' .'js/inert.min.js', array('jquery'), $this->version);
 
 		wp_enqueue_script('my-custom-script', ILB_DIR_URL. 'admin/assets/' .'js/myScript.js', array('jquery'), $this->version);
 

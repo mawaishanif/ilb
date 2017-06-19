@@ -10,7 +10,6 @@ $(".wp-heading-inline").before('<div id="responser"></div>');
 
 		var data = {
 			action: 'builder_admin_layout',
-			data: userData
 		};
 
 		$.post(ajaxurl, data, function(response) {

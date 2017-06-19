@@ -55,10 +55,16 @@ function disableBodyScroll(){
 				overlay = jQuery('<div id="modal-overlay"></div>').addClass('display-none');
 				jQuery('body').prepend(overlay);
 			}
-			overlay.addClass('overlay');
+			overlay.addClass('modal-overlay');
 			targetID = jQuery(this).attr('data-target');
 			target = jQuery('body').find(targetID);
 
+			var modal_box = document.querySelector(targetID);
+
+			Array.from(document.body.children).forEach(child =>{
+				if (child != modal_box)
+					child.inert = true;
+			})
 			modal = target.find('.modal');
 			header = target.find('.modal-header');
 			close = target.find('.close');
@@ -73,8 +79,8 @@ function disableBodyScroll(){
 			function modalCSS () {
 				if (jQuery(window).width() > 868) {
 					modal.css({
-						'width' : '738px ',
-						'maxWidth': ' 46.13rem'
+						'width' : '90% ',
+						'maxWidth': ' 75.13rem'
 					});
 				}else{
 					modal.css({
@@ -103,10 +109,15 @@ function disableBodyScroll(){
 			function modalClose() {
 				if (target.hasClass('modal-opened')) {
 					overlay.addClass('display-none');
-					target.addClass('display-none');
 					target.removeClass('modal-opened');
 					enableBodyScroll();
 					stoplistener();
+					var modal_box = document.querySelector(targetID);
+
+					Array.from(document.body.children).forEach(child =>{
+						if (child != modal_box)
+							child.inert = false;
+					})
 				}
 			}
 

@@ -103,7 +103,7 @@ function ilb_section_sc( $attributes, $content = null ) {
 		</div>
 	</div>' : '';
 
-	return '< section'.$section_id.' class="dnd_section_dd '.$class.'"'.$bg_image_output.$parallax_output.' style="'.$bg_color_output.$background_output.'">
+	return '<section'.$section_id.' class="dnd_section_dd '.$class.'"'.$bg_image_output.$parallax_output.' style="'.$bg_color_output.$background_output.'">
 		'.$section_header.'
 		<div class="dnd_section_content"><div class="dnd_container">'.do_shortcode($content).'</div></div>
 		'.$section_footer.'
