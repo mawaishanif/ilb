@@ -23,7 +23,7 @@ $data = '<div id="dnd_shortcode_selector">
 
 				// $test = (isset($shortcode[0]->sc_properties()[$index_name]['hidden'])) ? $shortcode[0]->sc_properties()[$index_name]['hidden'] : 'nothing found';
 
-				$data .= '<li class="dnd_select_shortcode" data-shortcode="'.$name.'"><span class="item-title">' . $description . '</span><span class="item-info">[' . $name . ']'.$child_name.'</span></li>';
+				$data .= '<li class="dnd_select_shortcode" data-shortcode="'.$name.'"><span class="item-title-1">' . $description . '</span><span class="item-info">[' . $name . ']'.$child_name.'</span></li>';
 			}
 		}
 

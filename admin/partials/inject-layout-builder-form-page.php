@@ -1,5 +1,4 @@
 <?php
-require( '../../../../wp-load.php' );
 
 if ( !current_user_can( 'author' ) && !current_user_can( 'editor' ) && !current_user_can( 'administrator' ) )
 	die( 'Access denied' );
@@ -92,11 +91,11 @@ if ( empty( $_GET['shortcode'] ) ){
 		$extract_att_cont = ABdev_attributes_and_content($_GET['shortcode'],$selected_content);
 	}
 
-	$edit_class_out = (isset($_GET['action']) && $_GET['action']=='edit') ? ' class="dnd_attributes_table_editing"' : '';
+	$edit_class_out = (isset($_GET['performing']) && $_GET['performing']=='editing') ? ' class="dnd_attributes_table_editing"' : '';
 
 	$return = '<table id="dnd_attributes_table"'.$edit_class_out.'>';
 
-	if(isset($_GET['action']) && $_GET['action']=='edit'){
+	if(isset($_GET['performing']) && $_GET['performing']=='editing'){
 		$return .= '<tr id="dnd_shortcode_title"><td colspan="2"><h3>'.$shortcode['description'].'</h3></td></tr>';
 	}
 
@@ -169,7 +168,7 @@ if ( empty( $_GET['shortcode'] ) ){
 		$return .= '<tr><td class="dnd_with_label"><label>' . $shortcode_content_desc . '</label></td><td><textarea name="dnd_shortcode_content" id="dnd_shortcode_content" class="'.$content_editor_class.'">' . $shortcode_content . '</textarea></td></tr>';
 	}
 
-	if(isset($_GET['action']) && $_GET['action']=='edit'){
+	if(isset($_GET['performing']) && $_GET['performing']=='editing'){
 		$return .= '<tr><td>'.(isset($output_add_child_button) ? $output_add_child_button : '').'</td><td class="dnd_insert_shortcode_button"><a href="#" class="button-primary" id="dnd_save_changes">' . __( 'Save Changes', 'dnd-shortcodes' ) . '</a></td></tr>';
 	}
 	else{
@@ -178,10 +177,10 @@ if ( empty( $_GET['shortcode'] ) ){
 
 	$return .= '</table>';
 
-	$return .= '<input type="hidden" name="dnd_action" id="dnd_action" value="'.$_GET['action'].'" /><input type="hidden" name="dnd_shortcode" id="dnd_shortcode" value="'.$_GET['shortcode'].'" /><div class="clear"></div>';
+	$return .= '<input type="hidden" name="dnd_action" id="dnd_action" value="'.$_GET['performing'].'" /><input type="hidden" name="dnd_shortcode" id="dnd_shortcode" value="'.$_GET['shortcode'].'" /><div class="clear"></div>';
 
 
-	if(isset($_GET['action']) && $_GET['action']=='edit'){
+	if(isset($_GET['performing']) && $_GET['performing']=='editing'){
 		$return = '<div id="dnd_edit_shortcode_wrapper">'.$return.'</div>';
 	}
 
