@@ -1,141 +1,152 @@
 jQuery(document).ready(function($) {
 	"use strict";
 
-	function toggle_builder(){
-		if ($dd_tab.hasClass('active_builder')) {
-			$dd_tab.text('Inject Layout Builder')
-			$dd_tab.removeClass('active_builder');
 
 
-			$dd_tab_content.hide();
-			$dd_shortcode_button.show();
-			$("#postdivrich").show();
 
-			dom.addClass('wp-content-wrap', 'tmce-active');
-			$.removeCookie('dnd_dd_activated', { path: '/' });
 
-		}else{
-			
-			$dd_tab.text('Back to WP Editor')
-			$("#postdivrich").hide();
-			$dd_tab_content.show();
-			$dd_shortcode_button.hide();
-			dom.removeClass('wp-content-wrap', 'html-active');
-			dom.removeClass('wp-content-wrap', 'tmce-active');
-			$dd_tab.addClass('active_builder');
-			$.cookie('dnd_dd_activated', 'activated', { path: '/' });
-			generate_from_editor();
 
-		}
-	}
+/*=============================================
+=            ALL BUILDER FUNCTIONS            =
+=============================================*/
+function toggle_builder(){
+	if ($builder_launcher.hasClass('active_builder')) {
+		$builder_launcher.text('Inject Layout Builder')
+		$builder_launcher.removeClass('active_builder');
 
-	function activate_from_cookie() {
 
-		$dd_tab.text('Back to WP Editor')
-		$("#postdivrich").hide();
+		$dd_tab_content.hide();
+		$("#wp-content-editor-container").show();
+		$("#post-status-info").show();
+		$("#wp-content-editor-tools").css('visibility', 'visible');
+
+		dom.addClass('wp-content-wrap', 'tmce-active');
+		$.removeCookie('dnd_dd_activated', { path: '/' });
+
+	}else{
+
+		$builder_launcher.text('Back to WP Editor')
+		$("#wp-content-editor-container").hide();
+		$("#post-status-info").hide();
+		$("#wp-content-editor-tools").css('visibility', 'hidden');
 		$dd_tab_content.show();
-		$dd_shortcode_button.hide();
 		dom.removeClass('wp-content-wrap', 'html-active');
 		dom.removeClass('wp-content-wrap', 'tmce-active');
-		$dd_tab.addClass('active_builder');
+		$builder_launcher.addClass('active_builder');
 		$.cookie('dnd_dd_activated', 'activated', { path: '/' });
 		generate_from_editor();
+
 	}
+}
 
-	function make_elements_sortable(){
-		$( ".dnd_column" ).sortable({
-			connectWith: ".dnd_column",
-			items: "> .dnd_element",
-			revert: true,
-			tolerance: "pointer",
-			placeholder: "dnd_element_placeholder",
-			forcePlaceholderSize: true,
-			stop: function(){
-				rebuild_widths();
-				write_to_editor();
-			},
-			over: rebuild_widths
-		}).disableSelection();
-	}
+function activate_from_cookie() {
 
+	$builder_launcher.text('Back to WP Editor')
+	$("#wp-content-editor-container").hide();
+	$("#post-status-info").hide();
+	$("#wp-content-editor-tools").css('visibility', 'hidden');
+	$dd_tab_content.show();
+	dom.removeClass('wp-content-wrap', 'html-active');
+	dom.removeClass('wp-content-wrap', 'tmce-active');
+	$builder_launcher.addClass('active_builder');
+	$.cookie('dnd_dd_activated', 'activated', { path: '/' });
+	generate_from_editor();
+}
 
-	function make_elements_resizable(){
-		$('.dnd_column').not( ':last-child' ).resizable({
-			handles: "e", 
-			containment: "parent",
-			start: function( event, ui ) {
-				var maxWidth = ui.element.width() + ui.element.next().width()-10;
-				ui.element.resizable({maxWidth: maxWidth});
-				$('.dnd_column').each(function(){
-					var item_width = $(this).width();
-					$(this).data("initial_width", item_width);
-				});
-			},
-			resize: function( event, ui ) {
-				resize_others(ui.element, ui.originalSize.width - ui.size.width);
-				columns_spans(ui.element.parent());
-			},
-			stop: function( event, ui ) {
-				write_to_editor();
-			}
-		}).on('resize', function (e) {
-			e.stopPropagation();
-		});
-	}
+function make_elements_sortable(){
+	$( ".dnd_column" ).sortable({
+		connectWith: ".dnd_column",
+		items: "> .dnd_element",
+		revert: true,
+		tolerance: "pointer",
+		placeholder: "dnd_element_placeholder",
+		forcePlaceholderSize: true,
+		stop: function(){
+			rebuild_widths();
+			write_to_editor();
+		},
+		over: rebuild_widths
+	}).disableSelection();
+}
 
 
-	function write_to_editor(){
-		if($dd_tab_content.hasClass('syntax_error')){
-			return;
+function make_elements_resizable(){
+	$('.dnd_column').not( ':last-child' ).resizable({
+		handles: "e", 
+		containment: "parent",
+		start: function( event, ui ) {
+			var maxWidth = ui.element.width() + ui.element.next().width()-10;
+			ui.element.resizable({maxWidth: maxWidth});
+			$('.dnd_column').each(function(){
+				var item_width = $(this).width();
+				$(this).data("initial_width", item_width);
+			});
+		},
+		resize: function( event, ui ) {
+			resize_others(ui.element, ui.originalSize.width - ui.size.width);
+			columns_spans(ui.element.parent());
+		},
+		stop: function( event, ui ) {
+			write_to_editor();
 		}
-		var output='';
-		var counter=0;
-		$dd_tab_content.find('.dnd_content_section').each(function(){
-			if(counter>0){
-				output += '\r\n\r\n';
-			}
-			counter++;
-			output += '[section_dd';
-			output += ($(this).data('fullwidth')!==undefined && $(this).data('fullwidth')!=='' ) ? ' fullwidth="'+$(this).data('fullwidth')+'"' : '';
-			output += ($(this).data('video_bg')!==undefined && $(this).data('video_bg')!=='' ) ? ' video_bg="'+$(this).data('video_bg')+'"' : '';
-			output += ($(this).data('bg_color')!==undefined && $(this).data('bg_color')!=='' ) ? ' bg_color="'+$(this).data('bg_color')+'"' : '';
-			output += ($(this).data('bg_image')!==undefined && $(this).data('bg_image')!=='' ) ? ' bg_image="'+$(this).data('bg_image')+'"' : '';
-			output += ($(this).data('parallax')!==undefined && $(this).data('parallax')!=='' ) ? ' parallax="'+$(this).data('parallax')+'"' : '';
-			output += ($(this).data('section_title')!==undefined && $(this).data('section_title')!=='' ) ? ' section_title="'+$(this).data('section_title')+'"' : '';
-			output += ($(this).data('section_id')!==undefined && $(this).data('section_id')!=='' ) ? ' section_id="'+$(this).data('section_id')+'"' : '';
-			output += ($(this).data('section_intro')!==undefined && $(this).data('section_intro')!=='' ) ? ' section_intro="'+$(this).data('section_intro')+'"' : '';
-			output += ($(this).data('section_outro')!==undefined && $(this).data('section_outro')!=='' ) ? ' section_outro="'+$(this).data('section_outro')+'"' : '';
+	}).on('resize', function (e) {
+		e.stopPropagation();
+	});
+}
+
+
+function write_to_editor(){
+	if($dd_tab_content.hasClass('syntax_error')){
+		return;
+	}
+	var output='';
+	var counter=0;
+	$dd_tab_content.find('.dnd_content_section').each(function(){
+		if(counter>0){
+			output += '\r\n\r\n';
+		}
+		counter++;
+		output += '[section_dd';
+		output += ($(this).data('fullwidth')!==undefined && $(this).data('fullwidth')!=='' ) ? ' fullwidth="'+$(this).data('fullwidth')+'"' : '';
+		output += ($(this).data('video_bg')!==undefined && $(this).data('video_bg')!=='' ) ? ' video_bg="'+$(this).data('video_bg')+'"' : '';
+		output += ($(this).data('bg_color')!==undefined && $(this).data('bg_color')!=='' ) ? ' bg_color="'+$(this).data('bg_color')+'"' : '';
+		output += ($(this).data('bg_image')!==undefined && $(this).data('bg_image')!=='' ) ? ' bg_image="'+$(this).data('bg_image')+'"' : '';
+		output += ($(this).data('parallax')!==undefined && $(this).data('parallax')!=='' ) ? ' parallax="'+$(this).data('parallax')+'"' : '';
+		output += ($(this).data('section_title')!==undefined && $(this).data('section_title')!=='' ) ? ' section_title="'+$(this).data('section_title')+'"' : '';
+		output += ($(this).data('section_id')!==undefined && $(this).data('section_id')!=='' ) ? ' section_id="'+$(this).data('section_id')+'"' : '';
+		output += ($(this).data('section_intro')!==undefined && $(this).data('section_intro')!=='' ) ? ' section_intro="'+$(this).data('section_intro')+'"' : '';
+		output += ($(this).data('section_outro')!==undefined && $(this).data('section_outro')!=='' ) ? ' section_outro="'+$(this).data('section_outro')+'"' : '';
+		output += ($(this).data('class')!==undefined && $(this).data('class')!=='' ) ? ' class="'+$(this).data('class')+'"' : '';
+		output += ']\r\n';
+		$(this).find('.dnd_column').each(function(){
+			output += '[column_dd';
+			output += ($(this).data('column_span')!==undefined && $(this).data('column_span')!=='' ) ? ' span="'+$(this).data('column_span')+'"' : '';
+			output += ($(this).data('animation')!==undefined && $(this).data('animation')!=='' ) ? ' animation="'+$(this).data('animation')+'"' : '';
+			output += ($(this).data('duration')!==undefined && $(this).data('duration')!=='' ) ? ' duration="'+$(this).data('duration')+'"' : '';
+			output += ($(this).data('delay')!==undefined && $(this).data('delay')!=='' ) ? ' delay="'+$(this).data('delay')+'"' : '';
 			output += ($(this).data('class')!==undefined && $(this).data('class')!=='' ) ? ' class="'+$(this).data('class')+'"' : '';
 			output += ']\r\n';
-			$(this).find('.dnd_column').each(function(){
-				output += '[column_dd';
-				output += ($(this).data('column_span')!==undefined && $(this).data('column_span')!=='' ) ? ' span="'+$(this).data('column_span')+'"' : '';
-				output += ($(this).data('animation')!==undefined && $(this).data('animation')!=='' ) ? ' animation="'+$(this).data('animation')+'"' : '';
-				output += ($(this).data('duration')!==undefined && $(this).data('duration')!=='' ) ? ' duration="'+$(this).data('duration')+'"' : '';
-				output += ($(this).data('delay')!==undefined && $(this).data('delay')!=='' ) ? ' delay="'+$(this).data('delay')+'"' : '';
-				output += ($(this).data('class')!==undefined && $(this).data('class')!=='' ) ? ' class="'+$(this).data('class')+'"' : '';
-				output += ']\r\n';
-				$(this).find('.dnd_element').each(function(){
-					output += $(this).data("shortcode")+"\r\n";
-				});
-				output += '[/column_dd]\r\n';
+			$(this).find('.dnd_element').each(function(){
+				output += $(this).data("shortcode")+"\r\n";
 			});
-			output += '[/section_dd]';
+			output += '[/column_dd]\r\n';
 		});
-		$('#content').val(output);
-		output = output.replace(/\r\n|\r|\n/g, "<br>");
-		var editor = tinymce.get('content'); 
-		if(editor!==undefined && editor!==null){
-			editor.setContent(output);
-		}
+		output += '[/section_dd]';
+	});
+	$('#content').val(output);
+	output = output.replace(/\r\n|\r|\n/g, "<br>");
+	var editor = tinymce.get('content'); 
+	if(editor!==undefined && editor!==null){
+		editor.setContent(output);
 	}
+}
 
 
-	function generate_from_editor(content){
-		if(content == undefined){
-			content = $('#content').val();
-		}
-		$('.dnd_content_section').remove();
+function generate_from_editor(content){
+	if(content == undefined){
+		content = $('#content').val();
+	}
+	$('.dnd_content_section').remove();
 
 		content = content.replace(/_DD/g, '_dd'); // replace old version uppercase sufixes
 		content = content.replace(/(raw_dd[\s\S]*?\/raw_dd)|(code_dd[\s\S]*?\/code_dd)|(pre_dd[\s\S]*?\/pre_dd)/g, function(match){
@@ -223,7 +234,7 @@ jQuery(document).ready(function($) {
 					output += '<span class="element_name">'+element_name+element_content+'</span>';
 					output += '<span class="dnd_element_delete" title="'+dnd_from_WP.delete_element+'"></span><span class="dnd_element_duplicate" title="'+dnd_from_WP.duplicate_element+'"></span><span class="dnd_element_edit" title="'+dnd_from_WP.edit_element+'"></span></div>';
 				});
-				output += '<span class="dnd_add_element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span><p>'+$(this).attr("span")+'/12</p>';
+				output += '<span class="dnd_add_element" data-component="modal" data-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span><p>'+$(this).attr("span")+'/12</p>';
 				output += '</div>';
 			});
 			output += '</div>';
@@ -307,7 +318,7 @@ jQuery(document).ready(function($) {
 
 
 	function rebuild_widths(){
-		$("#dnd_dragdrop").find('.dnd_content_section').each(function(){
+		$(".inject_layout_wrapper").find('.dnd_content_section').each(function(){
 			var resize_sectionWidth = $(this).width();
 			var resize_grid = Math.floor(resize_sectionWidth/12);
 			$(this).children('.dnd_column').each(function(){
@@ -385,86 +396,176 @@ jQuery(document).ready(function($) {
 
 
 function trim(str, charlist) {
-		//http://phpjs.org/functions/trim/
-		var whitespace, l = 0,
-		i = 0;
-		str += '';
-		if (!charlist) {
-			whitespace =
-			' \n\r\t\f\x0b\xa0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000';
-		} else {
-			charlist += '';
-			whitespace = charlist.replace(/([\[\]\(\)\.\?\/\*\{\}\+\$\^\:])/g, '$1');
-		}
-		l = str.length;
-		for (i = 0; i < l; i++) {
-			if (whitespace.indexOf(str.charAt(i)) === -1) {
-				str = str.substring(i);
-				break;
-			}
-		}
-		l = str.length;
-		for (i = l - 1; i >= 0; i--) {
-			if (whitespace.indexOf(str.charAt(i)) === -1) {
-				str = str.substring(0, i + 1);
-				break;
-			}
-		}
-		return whitespace.indexOf(str.charAt(0)) === -1 ? str : '';
+	//http://phpjs.org/functions/trim/
+	var whitespace, l = 0,
+	i = 0;
+	str += '';
+	if (!charlist) {
+		whitespace =
+		' \n\r\t\f\x0b\xa0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000';
+	} else {
+		charlist += '';
+		whitespace = charlist.replace(/([\[\]\(\)\.\?\/\*\{\}\+\$\^\:])/g, '$1');
 	}
-
-
-	var scrollbar_options = {
-		theme:'dark-thin',
-		mouseWheelPixels: 100,
-		scrollInertia: 500
-	};
-
-	var fancybox_options = {
-		'width':'95%',
-		'height':'100%',
-		'scrolling':'no',
-		'autoDimensions':false,
-		'transitionIn':'none',
-		'transitionOut':'none',
-		'type':'ajax',
-		'titleShow':false,
-		'onComplete':function(){
-			$('.dnd-colorpicker').wpColorPicker();
-			setTimeout(function(){
-				$(".textarea_cleditor").cleditor().each(function(){
-					$('#dnd_edit_shortcode_wrapper').mCustomScrollbar("update");
-				});
-			},100);
-			$("#dnd_shortcodes_list .dnd_select_shortcode").filter(":even").addClass('even');
-			$('#dnd_shortcode_selector .clear_field').hide();
-			$('#dnd_shortcodes_list').css('height', '-=40px').mCustomScrollbar(scrollbar_options);
-			$('#dnd_edit_shortcode_wrapper').mCustomScrollbar(scrollbar_options);
+	l = str.length;
+	for (i = 0; i < l; i++) {
+		if (whitespace.indexOf(str.charAt(i)) === -1) {
+			str = str.substring(i);
+			break;
 		}
-	};
+	}
+	l = str.length;
+	for (i = l - 1; i >= 0; i--) {
+		if (whitespace.indexOf(str.charAt(i)) === -1) {
+			str = str.substring(0, i + 1);
+			break;
+		}
+	}
+	return whitespace.indexOf(str.charAt(0)) === -1 ? str : '';
+}
+
+
+function content_into_modal (selector, header_text, content) {
+	var modal_container = $('<div id="'+selector+'" role="dialog" aria-labelledby="modal_heading" class="modal-box inject_layout_wrapper ' + selector + '">\
+	                        <div class="modal-wrapper">\
+	                        <div>\
+	                        <div class="modal row">\
+	                        <div class="modal-header col-lg-12" id="modal_heading" tabindex="0">\
+	                        '+ header_text +'\
+	                        </div>\
+	                        <span class="close" tabindex="1" title="Close modal dialog of choosing shortcode elements"></span>\
+	                        <div class="modal-body col-lg-12">\
+	                        <div class="modal-content row">' + content + '</div>\
+	                        </div>\
+	                        </div>\
+	                        </div>\
+	                        </div></div>');
+	$('#wpwrap').after(modal_container);
+}
+
+/*=============================================
+	=====  End of ALL BUILDER FUNCTIONS  ======
+	=============================================*/
 
 
 
-	//$("#content-html").before( '<a id="dnd_content-dd" class="wp-switch-editor switch-dd">'+dnd_from_WP.drag_and_drop+'</a>' );
-	$("#postdivrich").after('<div id="dnd_dragdrop"><div id="dnd_tools"></div></div>');
 
 
-	$("#dnd_dragdrop").append('<div id="dnd_dragdrop_empty"><br><a id="dnd_add_section_second">'+dnd_from_WP.add_section+'</a></div>');
-	
-	$("#insert-media-button").after('<a id="dnd_shortcode_button" class="button insert-shortcode" title="'+dnd_from_WP.add_edit_shortcode+'">'+dnd_from_WP.add_edit_shortcode+'</a>');
 
-	var $dd_tab = $("#il_builder-trigger");
-	var $dd_tab_content = $("#dnd_dragdrop");
-	var $dd_tab_tools = $("#dnd_tools");
-	var $dd_shortcode_button = $("#dnd_shortcode_button");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//============APPENDING EMPTY TEMPLATE OF BUILDER============================
+
+$("#wp-content-editor-container").after('<div class="inject_layout_wrapper"><div id="dnd_tools"></div></div>');
+
+$(".inject_layout_wrapper").append('<div id="dnd_dragdrop_empty"><br><a id="dnd_add_section_second">'+dnd_from_WP.add_section+'</a></div>');
+
+$("#insert-media-button").after('<a id="dnd_shortcode_button" class="button insert-shortcode" title="'+dnd_from_WP.add_edit_shortcode+'">'+dnd_from_WP.add_edit_shortcode+'</a>');
+//=====================================================================
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+/*=============================================
+=            VARIABLES            =
+=============================================*/
+
+var scrollbar_options = {
+	theme:'dark-thin',
+	mouseWheelPixels: 100,
+	scrollInertia: 500
+};
+
+var fancybox_options = {
+	'width':'95%',
+	'height':'100%',
+	'scrolling':'no',
+	'autoDimensions':false,
+	'transitionIn':'none',
+	'transitionOut':'none',
+	'type':'ajax',
+	'titleShow':false,
+	'onComplete':function(){
+		$('.dnd-colorpicker').wpColorPicker();
+		setTimeout(function(){
+			$(".textarea_cleditor").cleditor().each(function(){
+				$('#dnd_edit_shortcode_wrapper').mCustomScrollbar("update");
+			});
+		},100);
+		$("#dnd_shortcodes_list .dnd_select_shortcode").filter(":even").addClass('even');
+		$('#dnd_shortcode_selector .clear_field').hide();
+		$('#dnd_shortcodes_list').css('height', '-=40px').mCustomScrollbar(scrollbar_options);
+		$('#dnd_edit_shortcode_wrapper').mCustomScrollbar(scrollbar_options);
+	}
+};
+
+
+	// BUTTON that will trigger/toggle  builder - button came from WP add_action
+	var $builder_launcher = $("#il_builder-trigger");
+
+	// MAIN BUILDER CONTAINER that contains all dragable elements
+	var $dd_tab_content = $(".inject_layout_wrapper");
+
+	// TOP BAR that is appending on top of MAIN BUILDER CONTAINER
+	var $builder_header = $("#dnd_tools");
+
+	// it refers to both VISUAL and TEXT editors of  WP
 	var dom = tinymce.DOM;
-	$dd_tab_content.css('minHeight',$("#postdivrich .wp-editor-area").height()+53+'px');
+
+	/*=====  End of VARIABLES  ======*/
+
+
+
+	
+	
+
+
+
+
+/*=================================================
+=            FIRST TIME INITIALIZATION            =
+=================================================*/
+
+	// setting the height of Drag'n'drop builder 
+	$dd_tab_content.css('minHeight',$("#wp-content-editor-container .wp-editor-area").height()+180+'px');
+	//hiding it until the user choose to build layouts with this builder
 	$dd_tab_content.hide();
-	$dd_tab_tools.append('<input type="button" id="dnd_add_section" class="dnd_button" title="" value="'+dnd_from_WP.add_section+'">');
-	$dd_tab_tools.append('<input type="button" id="dnd_layout_save" class="dnd_button" title="" value="'+dnd_from_WP.layout_save+'">');
-	$dd_tab_tools.append('<input type="button" id="dnd_layout_delete" class="dnd_button" title="" value="'+dnd_from_WP.layout_delete+'">');
-	$dd_tab_tools.append('<p id="dnd_temp" style="display:none;"></p>');
-	$dd_tab_tools.append('<a id="dnd_add_section_bottom">'+dnd_from_WP.add_section+'</a>');
+
+	// Creating a TOP BAR that can contain buttons or headings stuff
+	$builder_header.append('<button id="open_it_up" class="dnd_button" title="" >Testing button to reserve space</button>');
+	$builder_header.append('<div class="ilb-header"><div class="ilb-logo"><a href="#0"><img src="http://localhost/wordpress/wp-content/plugins/ilb/admin/assets/images/ilb-logo-dark.png" alt="" /></a></div></div>');
+	
+	// creating this tag for temporary holding created element stuff
+	$builder_header.append('<p id="dnd_temp" style="display:none;"></p>');
+
+	// button at the bottom of container that let user add new container
+	$builder_header.append('<a id="dnd_add_section_bottom">'+dnd_from_WP.add_section+'</a>');
 	$dd_tab_content.sortable({ 
 		items: "> .dnd_content_section", 
 		handle: ".dnd_section_handler", 
@@ -478,135 +579,57 @@ function trim(str, charlist) {
 		},
 		over: rebuild_widths
 	});
+	// preventing user to select text and stuff..because the stuff inside of it is draggable
 	$dd_tab_content.disableSelection();
 
+	/*=====  End of FIRST TIME INITIALIZATION  ======*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// Checking if user was already  using our builder then show up the Builder instead of WP_editor
 	if($.cookie('dnd_dd_activated') === 'activated'){
-		$("#wp-content-editor-tools").hide();
 		activate_from_cookie();
 	}
 
-	$dd_tab.click(function(e){
+	// Launch the builder if it's not currently open or close it because user want's to go back - ITS A TOGGLER
+	$builder_launcher.click(function(e){
 		e.preventDefault();
 		toggle_builder();
 	});
 
-	// $(".wp-switch-editor").click(function(e){
-	// 	e.preventDefault();
 
-	// 	$dd_tab_content.hide();
-	// 	$dd_shortcode_button.show();
-	// 	$dd_tab.removeClass('active_builder');
-	// 	$("#postdivrich").show();
-	// 	if($(this).hasClass('switch-tmce')){
-	// 		dom.addClass('wp-content-wrap', 'tmce-active');
-	// 	}
-	// 	if($(this).hasClass('switch-html')){
-	// 		dom.addClass('wp-content-wrap', 'html-active');
-	// 	}
-	// 	$.removeCookie('dnd_dd_activated', { path: '/' });
-
-	// });
-
-
-
-	$dd_shortcode_button.click(function(e){
-		e.preventDefault();
-		var selected_content = '';
-		if($('#wp-content-wrap').hasClass('tmce-active')){
-			selected_content = tinyMCE.activeEditor.selection.getContent({format : 'html'});
-		}
-		else{
-			var textComponent = document.getElementById('content');
-			if (document.selection !== undefined){
-				textComponent.focus();
-				var sel = document.selection.createRange();
-				selected_content = sel.text;
-			}
-			else if (textComponent.selectionStart !== undefined){
-				var startPos = textComponent.selectionStart;
-				var endPos = textComponent.selectionEnd;
-				selected_content = textComponent.value.substring(startPos, endPos);
-			}
-		}
-		selected_content = selected_content.replace(/(\r\n|\n|\r|\t)/gm,'').replace(/\s+/g,' ').replace(/<br \/> /g,'').replace(/\]\s\[/g,'][');
-
-		var exploded = selected_content.split(' ');
-		exploded = exploded[0].split(']');
-		var shortcode = exploded[0].substring(1);
-		selected_content = htmlspecialchars(selected_content,'ENT_QUOTES');
-		selected_content = encodeURIComponent(selected_content);
-		
-		if(shortcode===''){
-			fancybox_options.href = dnd_from_WP.plugins_url + '/admin/shortcode_selector.php?editor=text';
-			$.fancybox(fancybox_options);
-		}
-		else{
-			fancybox_options.href = dnd_from_WP.plugins_url + '/admin/shortcode_attributes.php?action=edit&shortcode='+shortcode+'&selected_content=' + selected_content;
-			$.fancybox(fancybox_options);
-
-		}
-	});
-
-
-	$("#dnd_add_section, #dnd_add_section_second, #dnd_add_section_bottom").click(function(e){
+	// If add section from bottom OR from where it is empty ..clicked...it will add section with buttons to add elements and remove empty section bcoz it is no long empty
+	$("#dnd_add_section_second, #dnd_add_section_bottom").click(function(e){
 		e.preventDefault();
 		$("#dnd_dragdrop_empty").hide();
-		$dd_tab_content.append('<div class="dnd_content_section"><span class="dnd_section_handler" title="'+dnd_from_WP.rearange_sections+'"></span><span class="dnd_section_delete" title="'+dnd_from_WP.delete_section+'"></span><span class="dnd_section_duplicate" title="'+dnd_from_WP.duplicate_section+'"></span><span class="dnd_section_edit" title="'+dnd_from_WP.edit_section+'"></span><span class="dnd_remove_column dnd_disabled" title="'+dnd_from_WP.remove_column+'"></span><span class="dnd_add_column" title="'+dnd_from_WP.add_column+'"></span><div class="dnd_column" data-column_span="12"><span class="dnd_add_element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span><p>12/12</p></div></div>');
+		$dd_tab_content.append('<div class="dnd_content_section">'
+		                       +'<span class="dnd_section_handler" title="'+dnd_from_WP.rearange_sections+'"></span>'
+		                       +'<span class="dnd_section_delete" title="'+dnd_from_WP.delete_section+'"></span>'
+		                       +'<span class="dnd_section_duplicate" title="'+dnd_from_WP.duplicate_section+'"></span>'
+		                       +'<span class="dnd_section_edit" title="'+dnd_from_WP.edit_section+'"></span>'
+		                       +'<span class="dnd_remove_column dnd_disabled" title="'+dnd_from_WP.remove_column+'"></span>'
+		                       +'<span class="dnd_add_column" title="'+dnd_from_WP.add_column+'"></span>'
+		                       +'<div class="dnd_column" data-column_span="12">'
+		                       +'<span class="dnd_add_element" data-component="modal" data-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span>'
+		                       +'<span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span>'
+		                       +'<p>12/12</p>'
+		                       +'</div></div>');
 		make_elements_sortable();
 		rebuild_widths();
 		write_to_editor();
-	});
-
-
-	$("#dnd_layout_save").click(function(e){
-		e.preventDefault();
-		var name = prompt(dnd_from_WP.layout_name,"");
-		if (name!=null && name!=''){
-			var data = {
-				action: 'ABdevDND_save_layout',
-				name: name,
-				layout: $('#content').val()
-			};
-			$.post(ajaxurl, data, function(response) {
-				$('#dnd_load_layout').append('<option value="'+name+'">'+name+'</option>');
-				alert(response);
-			});
-		}
-	});
-
-
-	$("#dnd_layout_delete").click(function(e){
-		e.preventDefault();
-		var name = prompt(dnd_from_WP.layout_name_delete,"");
-		if (name!=null && name!=''){
-			var data = {
-				action: 'ABdevDND_delete_layout',
-				name: name,
-			};
-			$.post(ajaxurl, data, function(response) {
-				$('#dnd_load_layout option[value="'+name+'"]').remove();
-				alert(response);
-			});
-		}
-	});
-
-
-	$("#dnd_load_layout").change(function(){
-		var $select = $(this);
-		$(this).parent().append('<div class="dnd_loader"></div>');
-		var selected_layout = $(this).val();
-		if(selected_layout!=''){
-			var data = {
-				action: 'ABdevDND_load_layout',
-				selected_layout: selected_layout,
-			};
-			$.post(ajaxurl, data, function(response) {
-				generate_from_editor(response);
-				write_to_editor();
-				$select.find('option[value=""]').attr("selected",true);
-				$('.dnd_loader').remove();
-			});
-		}
 	});
 
 
@@ -616,7 +639,7 @@ function trim(str, charlist) {
 			return;
 		}
 		var $parent = $(this).parent();
-		$parent.append('<div class="dnd_column"><span class="dnd_add_element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span></div>');
+		$parent.append('<div class="dnd_column"><span class="dnd_add_element" data-component="modal" data-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span></div>');
 		var count = $parent.children('.dnd_column').length;
 		if(count==12){
 			$(this).addClass('dnd_disabled');
@@ -730,17 +753,47 @@ $(document).on('click', '.dnd_section_duplicate' , function(e) {
 });
 
 
+var data = {
+	action: 'builder_admin_layout',
+};
+$.post(ajaxurl, data, function(response) {
+	if (response.success == true) {
+		content_into_modal('choose-element', 'Choose Element', response['data']);
+		$("#ilb_element_list").css({
+			'maxHeight': $(window).height() - 300 + 'px',
+			'overflow': 'hidden',
+			'overflowY': 'auto'
+		});
+	}
+});
+
 // add element
 $(document).on('click', '.dnd_add_element' , function(e) {
 	e.preventDefault();
 	$('.clicked_column').removeClass('clicked_column');
 	var $column = $(this).parent();
 	$column.addClass('clicked_column');
-	fancybox_options.href = dnd_from_WP.plugins_url + '/admin/shortcode_selector.php?editor=dnd';
-	$.fancybox(fancybox_options);
 });
 
 
+
+
+
+
+
+
+
+// data = 'action=shortcode_form_layout&performing=new&shortcode='+shortcode_name;
+// $.post(ajaxurl, data, function(response) {
+// 	if (response.success == true) {
+// 		content_into_modal('choose-element', 'Choose Element', response['data']);
+// 		$("#ilb_element_list").css({
+// 			'maxHeight': $(window).height() - 300 + 'px',
+// 			'overflow': 'hidden',
+// 			'overflowY': 'auto'
+// 		});
+// 	}
+// });
 $(document).on('click', '.dnd_select_shortcode' , function(e) {
 	e.preventDefault();
 	$('.selected_shortcode').removeClass('selected_shortcode');
@@ -879,7 +932,7 @@ $(document).on('click', '#dnd_insert_shortcode, #dnd_save_changes', function(e) 
 
 		$.fancybox.close();
 
-		if($dd_tab.hasClass('active_builder')){
+		if($builder_launcher.hasClass('active_builder')){
 			if(action==='new'){
 				output = output.replace(/'/g, '&#8217;');
 				var element_content = output.replace(/\[/g, '<').replace(/\]/g, '>').replace(/\*and\*/g, '&').replace(/\*lt\*/g, '<').replace(/\*gt\*/g, '>').replace(/\*space\*/g, ' ').replace(/\*nl\*/g, '\r\n').replace(/\*tab\*/g, '\t');
@@ -1088,5 +1141,6 @@ $(window).load(function() {
 });
 
 
-});
+modal('[data-component="modal"]');
 
+});

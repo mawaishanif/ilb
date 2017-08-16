@@ -9,8 +9,7 @@ $(".wp-heading-inline").before('<div id="responser"></div>');
 		var userData = 'I am working';
 
 		var data = {
-		action: 'builder_admin_layout',
-		data: userData
+			action: 'builder_admin_layout',
 		};
 
 		$.post(ajaxurl, data, function(response) {
@@ -25,4 +24,5 @@ $(".wp-heading-inline").before('<div id="responser"></div>');
 			}
 		});
 	}) 
+
 });
