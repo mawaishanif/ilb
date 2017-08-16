@@ -1,0 +1,1702 @@
+@charset "UTF-8";
+/* SOCIAL */
+@font-face {
+	font-family: 'Montserrat';
+	font-weight: 200;
+	font-style: normal;
+	src: url("./fonts/Montserrat-200/Montserrat-200.eot");
+	src: url("./fonts/Montserrat-200/Montserrat-200.eot?#iefix") format("embedded-opentype"), local("Montserrat ExtraLight"), local("Montserrat-200"), url("./fonts/Montserrat-200/Montserrat-200.woff2") format("woff2"), url("./fonts/Montserrat-200/Montserrat-200.woff") format("woff"), url("./fonts/Montserrat-200/Montserrat-200.ttf") format("truetype"), url("./fonts/Montserrat-200/Montserrat-200.svg#Montserrat") format("svg"); 
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-weight: 300;
+	font-style: normal;
+	src: url("./fonts/Montserrat-300/Montserrat-300.eot");
+	src: url("./fonts/Montserrat-300/Montserrat-300.eot?#iefix") format("embedded-opentype"), local("Montserrat Light"), local("Montserrat-300"), url("./fonts/Montserrat-300/Montserrat-300.woff2") format("woff2"), url("./fonts/Montserrat-300/Montserrat-300.woff") format("woff"), url("./fonts/Montserrat-300/Montserrat-300.ttf") format("truetype"), url("./fonts/Montserrat-300/Montserrat-300.svg#Montserrat") format("svg"); 
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-weight: 400;
+	font-style: normal;
+	src: url("./fonts/Montserrat-regular/Montserrat-regular.eot");
+	src: url("./fonts/Montserrat-regular/Montserrat-regular.eot?#iefix") format("embedded-opentype"), local("Montserrat Regular"), local("Montserrat-regular"), url("./fonts/Montserrat-regular/Montserrat-regular.woff2") format("woff2"), url("./fonts/Montserrat-regular/Montserrat-regular.woff") format("woff"), url("./fonts/Montserrat-regular/Montserrat-regular.ttf") format("truetype"), url("./fonts/Montserrat-regular/Montserrat-regular.svg#Montserrat") format("svg"); 
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-style: normal;
+	src: url("./fonts/Montserrat-500/Montserrat-500.eot");
+	src: url("./fonts/Montserrat-500/Montserrat-500.eot?#iefix") format("embedded-opentype"), local("Montserrat Medium"), local("Montserrat-500"), url("./fonts/Montserrat-500/Montserrat-500.woff2") format("woff2"), url("./fonts/Montserrat-500/Montserrat-500.woff") format("woff"), url("./fonts/Montserrat-500/Montserrat-500.ttf") format("truetype"), url("./fonts/Montserrat-500/Montserrat-500.svg#Montserrat") format("svg"); 
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-weight: 600;
+	font-style: normal;
+	src: url("./fonts/Montserrat-600/Montserrat-600.eot");
+	src: url("./fonts/Montserrat-600/Montserrat-600.eot?#iefix") format("embedded-opentype"), local("Montserrat SemiBold"), local("Montserrat-600"), url("./fonts/Montserrat-600/Montserrat-600.woff2") format("woff2"), url("./fonts/Montserrat-600/Montserrat-600.woff") format("woff"), url("./fonts/Montserrat-600/Montserrat-600.ttf") format("truetype"), url("./fonts/Montserrat-600/Montserrat-600.svg#Montserrat") format("svg"); 
+}
+@font-face {
+	font-family: 'Montserrat';
+	font-weight: 700;
+	font-style: normal;
+	src: url("./fonts/Montserrat-700/Montserrat-700.eot");
+	src: url("./fonts/Montserrat-700/Montserrat-700.eot?#iefix") format("embedded-opentype"), local("Montserrat Bold"), local("Montserrat-700"), url("./fonts/Montserrat-700/Montserrat-700.woff2") format("woff2"), url("./fonts/Montserrat-700/Montserrat-700.woff") format("woff"), url("./fonts/Montserrat-700/Montserrat-700.ttf") format("truetype"), url("./fonts/Montserrat-700/Montserrat-700.svg#Montserrat") format("svg"); 
+}
+@font-face {
+	font-family: 'Varela Round';
+	font-weight: 400;
+	font-style: normal;
+	src: url("./fonts/Varela-Round-regular/Varela-Round-regular.eot");
+	src: url("./fonts/Varela-Round-regular/Varela-Round-regular.eot?#iefix") format("embedded-opentype"), local("Varela Round Regular"), local("Varela-Round-regular"), url("./fonts/Varela-Round-regular/Varela-Round-regular.woff2") format("woff2"), url("./fonts/Varela-Round-regular/Varela-Round-regular.woff") format("woff"), url("./fonts/Varela-Round-regular/Varela-Round-regular.ttf") format("truetype"), url("./fonts/Varela-Round-regular/Varela-Round-regular.svg#VarelaRound") format("svg"); 
+}
+
+
+
+
+
+
+
+
+
+
+
+.display-none{
+	display: none;
+}
+
+
+
+
+
+
+ /* HIDING PREVIOUS OLD BUILDER */
+.inject_layout_wrapper {
+	display: none !important;
+}
+
+
+
+
+#inject_modal_wrapper *, #inject_layout_wrapper * {
+	line-height: 1.625em;
+	font-family: "Montserrat", "Helvetica Neue", "Segoe UI", "Verdana", sans-serif;
+}
+#inject_modal_wrapper h1, 
+#inject_modal_wrapper h2, 
+#inject_modal_wrapper h3, 
+#inject_modal_wrapper h4, 
+#inject_modal_wrapper h5, 
+#inject_modal_wrapper h6, 
+#inject_layout_wrapper h1, 
+#inject_layout_wrapper h2, 
+#inject_layout_wrapper h3, 
+#inject_layout_wrapper h4, 
+#inject_layout_wrapper h5, 
+#inject_layout_wrapper h6 {
+	font-family: "Varela Round", "Helvetica Neue", "Segoe UI", "Verdana", sans-serif;
+}
+
+#inject_modal_wrapper .icon, #inject_layout_wrapper .icon {
+	font-family: 'themify';
+}
+#inject_modal_wrapper img, #inject_layout_wrapper img {
+	width: 100%;
+	height: auto;
+}
+#inject_modal_wrapper .logo img, #inject_layout_wrapper .logo img {
+	margin: 0 auto;
+	width: 38px;
+}
+#inject_modal_wrapper .container-fluid, #inject_layout_wrapper .container-fluid {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+#inject_modal_wrapper .container, #inject_modal_wrapper .container-fluid, #inject_layout_wrapper .container, #inject_layout_wrapper .container-fluid {
+	margin-right: auto;
+	margin-left: auto;
+}
+#inject_modal_wrapper .wrap, #inject_layout_wrapper .wrap {
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+#inject_modal_wrapper .row, #inject_layout_wrapper .row {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+#inject_modal_wrapper .row.reverse, #inject_layout_wrapper .row.reverse {
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: reverse;
+	-ms-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+}
+#inject_modal_wrapper .row.with-gutter, #inject_layout_wrapper .row.with-gutter {
+	margin-left: -0.6rem;
+	margin-right: -0.6rem;
+}
+#inject_modal_wrapper .row.with-gutter > .col-xs, #inject_modal_wrapper .row.with-gutter > .col-sm, #inject_modal_wrapper .row.with-gutter > .col-md, #inject_modal_wrapper .row.with-gutter > .col-lg, #inject_modal_wrapper .row.with-gutter > .col-xs-1, #inject_modal_wrapper .row.with-gutter > .col-xs-2, #inject_modal_wrapper .row.with-gutter > .col-xs-3, #inject_modal_wrapper .row.with-gutter > .col-xs-4, #inject_modal_wrapper .row.with-gutter > .col-xs-5, #inject_modal_wrapper .row.with-gutter > .col-xs-6, #inject_modal_wrapper .row.with-gutter > .col-xs-7, #inject_modal_wrapper .row.with-gutter > .col-xs-8, #inject_modal_wrapper .row.with-gutter > .col-xs-9, #inject_modal_wrapper .row.with-gutter > .col-xs-10, #inject_modal_wrapper .row.with-gutter > .col-xs-11, #inject_modal_wrapper .row.with-gutter > .col-xs-12, #inject_modal_wrapper .row.with-gutter > .col-xs-13, #inject_modal_wrapper .row.with-gutter > .col-xs-14, #inject_modal_wrapper .row.with-gutter > .col-xs-15, #inject_modal_wrapper .row.with-gutter > .col-xs-16, #inject_modal_wrapper .row.with-gutter > .col-sm-1, #inject_modal_wrapper .row.with-gutter > .col-sm-2, #inject_modal_wrapper .row.with-gutter > .col-sm-3, #inject_modal_wrapper .row.with-gutter > .col-sm-4, #inject_modal_wrapper .row.with-gutter > .col-sm-5, #inject_modal_wrapper .row.with-gutter > .col-sm-6, #inject_modal_wrapper .row.with-gutter > .col-sm-7, #inject_modal_wrapper .row.with-gutter > .col-sm-8, #inject_modal_wrapper .row.with-gutter > .col-sm-9, #inject_modal_wrapper .row.with-gutter > .col-sm-10, #inject_modal_wrapper .row.with-gutter > .col-sm-11, #inject_modal_wrapper .row.with-gutter > .col-sm-12, #inject_modal_wrapper .row.with-gutter > .col-sm-13, #inject_modal_wrapper .row.with-gutter > .col-sm-14, #inject_modal_wrapper .row.with-gutter > .col-sm-15, #inject_modal_wrapper .row.with-gutter > .col-sm-16, #inject_modal_wrapper .row.with-gutter > .col-md-1, #inject_modal_wrapper .row.with-gutter > .col-md-2, #inject_modal_wrapper .row.with-gutter > .col-md-3, #inject_modal_wrapper .row.with-gutter > .col-md-4, #inject_modal_wrapper .row.with-gutter > .col-md-5, #inject_modal_wrapper .row.with-gutter > .col-md-6, #inject_modal_wrapper .row.with-gutter > .col-md-7, #inject_modal_wrapper .row.with-gutter > .col-md-8, #inject_modal_wrapper .row.with-gutter > .col-md-9, #inject_modal_wrapper .row.with-gutter > .col-md-10, #inject_modal_wrapper .row.with-gutter > .col-md-11, #inject_modal_wrapper .row.with-gutter > .col-md-12, #inject_modal_wrapper .row.with-gutter > .col-md-13, #inject_modal_wrapper .row.with-gutter > .col-md-14, #inject_modal_wrapper .row.with-gutter > .col-md-15, #inject_modal_wrapper .row.with-gutter > .col-md-16, #inject_modal_wrapper .row.with-gutter > .col-lg-1, #inject_modal_wrapper .row.with-gutter > .col-lg-2, #inject_modal_wrapper .row.with-gutter > .col-lg-3, #inject_modal_wrapper .row.with-gutter > .col-lg-4, #inject_modal_wrapper .row.with-gutter > .col-lg-5, #inject_modal_wrapper .row.with-gutter > .col-lg-6, #inject_modal_wrapper .row.with-gutter > .col-lg-7, #inject_modal_wrapper .row.with-gutter > .col-lg-8, #inject_modal_wrapper .row.with-gutter > .col-lg-9, #inject_modal_wrapper .row.with-gutter > .col-lg-10, #inject_modal_wrapper .row.with-gutter > .col-lg-11, #inject_modal_wrapper .row.with-gutter > .col-lg-12, #inject_modal_wrapper .row.with-gutter > .col-lg-13, #inject_modal_wrapper .row.with-gutter > .col-lg-14, #inject_modal_wrapper .row.with-gutter > .col-lg-15, #inject_modal_wrapper .row.with-gutter > .col-lg-16, #inject_layout_wrapper .row.with-gutter > .col-xs, #inject_layout_wrapper .row.with-gutter > .col-sm, #inject_layout_wrapper .row.with-gutter > .col-md, #inject_layout_wrapper .row.with-gutter > .col-lg, #inject_layout_wrapper .row.with-gutter > .col-xs-1, #inject_layout_wrapper .row.with-gutter > .col-xs-2, #inject_layout_wrapper .row.with-gutter > .col-xs-3, #inject_layout_wrapper .row.with-gutter > .col-xs-4, #inject_layout_wrapper .row.with-gutter > .col-xs-5, #inject_layout_wrapper .row.with-gutter > .col-xs-6, #inject_layout_wrapper .row.with-gutter > .col-xs-7, #inject_layout_wrapper .row.with-gutter > .col-xs-8, #inject_layout_wrapper .row.with-gutter > .col-xs-9, #inject_layout_wrapper .row.with-gutter > .col-xs-10, #inject_layout_wrapper .row.with-gutter > .col-xs-11, #inject_layout_wrapper .row.with-gutter > .col-xs-12, #inject_layout_wrapper .row.with-gutter > .col-xs-13, #inject_layout_wrapper .row.with-gutter > .col-xs-14, #inject_layout_wrapper .row.with-gutter > .col-xs-15, #inject_layout_wrapper .row.with-gutter > .col-xs-16, #inject_layout_wrapper .row.with-gutter > .col-sm-1, #inject_layout_wrapper .row.with-gutter > .col-sm-2, #inject_layout_wrapper .row.with-gutter > .col-sm-3, #inject_layout_wrapper .row.with-gutter > .col-sm-4, #inject_layout_wrapper .row.with-gutter > .col-sm-5, #inject_layout_wrapper .row.with-gutter > .col-sm-6, #inject_layout_wrapper .row.with-gutter > .col-sm-7, #inject_layout_wrapper .row.with-gutter > .col-sm-8, #inject_layout_wrapper .row.with-gutter > .col-sm-9, #inject_layout_wrapper .row.with-gutter > .col-sm-10, #inject_layout_wrapper .row.with-gutter > .col-sm-11, #inject_layout_wrapper .row.with-gutter > .col-sm-12, #inject_layout_wrapper .row.with-gutter > .col-sm-13, #inject_layout_wrapper .row.with-gutter > .col-sm-14, #inject_layout_wrapper .row.with-gutter > .col-sm-15, #inject_layout_wrapper .row.with-gutter > .col-sm-16, #inject_layout_wrapper .row.with-gutter > .col-md-1, #inject_layout_wrapper .row.with-gutter > .col-md-2, #inject_layout_wrapper .row.with-gutter > .col-md-3, #inject_layout_wrapper .row.with-gutter > .col-md-4, #inject_layout_wrapper .row.with-gutter > .col-md-5, #inject_layout_wrapper .row.with-gutter > .col-md-6, #inject_layout_wrapper .row.with-gutter > .col-md-7, #inject_layout_wrapper .row.with-gutter > .col-md-8, #inject_layout_wrapper .row.with-gutter > .col-md-9, #inject_layout_wrapper .row.with-gutter > .col-md-10, #inject_layout_wrapper .row.with-gutter > .col-md-11, #inject_layout_wrapper .row.with-gutter > .col-md-12, #inject_layout_wrapper .row.with-gutter > .col-md-13, #inject_layout_wrapper .row.with-gutter > .col-md-14, #inject_layout_wrapper .row.with-gutter > .col-md-15, #inject_layout_wrapper .row.with-gutter > .col-md-16, #inject_layout_wrapper .row.with-gutter > .col-lg-1, #inject_layout_wrapper .row.with-gutter > .col-lg-2, #inject_layout_wrapper .row.with-gutter > .col-lg-3, #inject_layout_wrapper .row.with-gutter > .col-lg-4, #inject_layout_wrapper .row.with-gutter > .col-lg-5, #inject_layout_wrapper .row.with-gutter > .col-lg-6, #inject_layout_wrapper .row.with-gutter > .col-lg-7, #inject_layout_wrapper .row.with-gutter > .col-lg-8, #inject_layout_wrapper .row.with-gutter > .col-lg-9, #inject_layout_wrapper .row.with-gutter > .col-lg-10, #inject_layout_wrapper .row.with-gutter > .col-lg-11, #inject_layout_wrapper .row.with-gutter > .col-lg-12, #inject_layout_wrapper .row.with-gutter > .col-lg-13, #inject_layout_wrapper .row.with-gutter > .col-lg-14, #inject_layout_wrapper .row.with-gutter > .col-lg-15, #inject_layout_wrapper .row.with-gutter > .col-lg-16 {
+	padding-left: 0.6rem;
+	padding-right: 0.6rem;
+}
+#inject_modal_wrapper .col-xs, #inject_modal_wrapper .col-sm, #inject_modal_wrapper .col-md, #inject_modal_wrapper .col-lg, #inject_modal_wrapper .col-xs-1, #inject_modal_wrapper .col-xs-2, #inject_modal_wrapper .col-xs-3, #inject_modal_wrapper .col-xs-4, #inject_modal_wrapper .col-xs-5, #inject_modal_wrapper .col-xs-6, #inject_modal_wrapper .col-xs-7, #inject_modal_wrapper .col-xs-8, #inject_modal_wrapper .col-xs-9, #inject_modal_wrapper .col-xs-10, #inject_modal_wrapper .col-xs-11, #inject_modal_wrapper .col-xs-12, #inject_modal_wrapper .col-xs-13, #inject_modal_wrapper .col-xs-14, #inject_modal_wrapper .col-xs-15, #inject_modal_wrapper .col-xs-16, #inject_modal_wrapper .col-sm-1, #inject_modal_wrapper .col-sm-2, #inject_modal_wrapper .col-sm-3, #inject_modal_wrapper .col-sm-4, #inject_modal_wrapper .col-sm-5, #inject_modal_wrapper .col-sm-6, #inject_modal_wrapper .col-sm-7, #inject_modal_wrapper .col-sm-8, #inject_modal_wrapper .col-sm-9, #inject_modal_wrapper .col-sm-10, #inject_modal_wrapper .col-sm-11, #inject_modal_wrapper .col-sm-12, #inject_modal_wrapper .col-sm-13, #inject_modal_wrapper .col-sm-14, #inject_modal_wrapper .col-sm-15, #inject_modal_wrapper .col-sm-16, #inject_modal_wrapper .col-md-1, #inject_modal_wrapper .col-md-2, #inject_modal_wrapper .col-md-3, #inject_modal_wrapper .col-md-4, #inject_modal_wrapper .col-md-5, #inject_modal_wrapper .col-md-6, #inject_modal_wrapper .col-md-7, #inject_modal_wrapper .col-md-8, #inject_modal_wrapper .col-md-9, #inject_modal_wrapper .col-md-10, #inject_modal_wrapper .col-md-11, #inject_modal_wrapper .col-md-12, #inject_modal_wrapper .col-md-13, #inject_modal_wrapper .col-md-14, #inject_modal_wrapper .col-md-15, #inject_modal_wrapper .col-md-16, #inject_modal_wrapper .col-lg-1, #inject_modal_wrapper .col-lg-2, #inject_modal_wrapper .col-lg-3, #inject_modal_wrapper .col-lg-4, #inject_modal_wrapper .col-lg-5, #inject_modal_wrapper .col-lg-6, #inject_modal_wrapper .col-lg-7, #inject_modal_wrapper .col-lg-8, #inject_modal_wrapper .col-lg-9, #inject_modal_wrapper .col-lg-10, #inject_modal_wrapper .col-lg-11, #inject_modal_wrapper .col-lg-12, #inject_modal_wrapper .col-lg-13, #inject_modal_wrapper .col-lg-14, #inject_modal_wrapper .col-lg-15, #inject_modal_wrapper .col-lg-16, #inject_layout_wrapper .col-xs, #inject_layout_wrapper .col-sm, #inject_layout_wrapper .col-md, #inject_layout_wrapper .col-lg, #inject_layout_wrapper .col-xs-1, #inject_layout_wrapper .col-xs-2, #inject_layout_wrapper .col-xs-3, #inject_layout_wrapper .col-xs-4, #inject_layout_wrapper .col-xs-5, #inject_layout_wrapper .col-xs-6, #inject_layout_wrapper .col-xs-7, #inject_layout_wrapper .col-xs-8, #inject_layout_wrapper .col-xs-9, #inject_layout_wrapper .col-xs-10, #inject_layout_wrapper .col-xs-11, #inject_layout_wrapper .col-xs-12, #inject_layout_wrapper .col-xs-13, #inject_layout_wrapper .col-xs-14, #inject_layout_wrapper .col-xs-15, #inject_layout_wrapper .col-xs-16, #inject_layout_wrapper .col-sm-1, #inject_layout_wrapper .col-sm-2, #inject_layout_wrapper .col-sm-3, #inject_layout_wrapper .col-sm-4, #inject_layout_wrapper .col-sm-5, #inject_layout_wrapper .col-sm-6, #inject_layout_wrapper .col-sm-7, #inject_layout_wrapper .col-sm-8, #inject_layout_wrapper .col-sm-9, #inject_layout_wrapper .col-sm-10, #inject_layout_wrapper .col-sm-11, #inject_layout_wrapper .col-sm-12, #inject_layout_wrapper .col-sm-13, #inject_layout_wrapper .col-sm-14, #inject_layout_wrapper .col-sm-15, #inject_layout_wrapper .col-sm-16, #inject_layout_wrapper .col-md-1, #inject_layout_wrapper .col-md-2, #inject_layout_wrapper .col-md-3, #inject_layout_wrapper .col-md-4, #inject_layout_wrapper .col-md-5, #inject_layout_wrapper .col-md-6, #inject_layout_wrapper .col-md-7, #inject_layout_wrapper .col-md-8, #inject_layout_wrapper .col-md-9, #inject_layout_wrapper .col-md-10, #inject_layout_wrapper .col-md-11, #inject_layout_wrapper .col-md-12, #inject_layout_wrapper .col-md-13, #inject_layout_wrapper .col-md-14, #inject_layout_wrapper .col-md-15, #inject_layout_wrapper .col-md-16, #inject_layout_wrapper .col-lg-1, #inject_layout_wrapper .col-lg-2, #inject_layout_wrapper .col-lg-3, #inject_layout_wrapper .col-lg-4, #inject_layout_wrapper .col-lg-5, #inject_layout_wrapper .col-lg-6, #inject_layout_wrapper .col-lg-7, #inject_layout_wrapper .col-lg-8, #inject_layout_wrapper .col-lg-9, #inject_layout_wrapper .col-lg-10, #inject_layout_wrapper .col-lg-11, #inject_layout_wrapper .col-lg-12, #inject_layout_wrapper .col-lg-13, #inject_layout_wrapper .col-lg-14, #inject_layout_wrapper .col-lg-15, #inject_layout_wrapper .col-lg-16 {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 0;
+	flex-shrink: 0;
+	min-height: 1px;
+}
+#inject_modal_wrapper .col-xs, #inject_modal_wrapper .col-sm, #inject_modal_wrapper .col-md, #inject_modal_wrapper .col-lg, #inject_layout_wrapper .col-xs, #inject_layout_wrapper .col-sm, #inject_layout_wrapper .col-md, #inject_layout_wrapper .col-lg {
+	flex-grow: 1;
+	flex-basis: 0;
+	max-width: 100%;
+}
+#inject_modal_wrapper .col-xs-1, #inject_layout_wrapper .col-xs-1 {
+	flex-basis: 6.25%;
+	max-width: 6.25%;
+}
+#inject_modal_wrapper .col-xs-2, #inject_layout_wrapper .col-xs-2 {
+	flex-basis: 12.5%;
+	max-width: 12.5%;
+}
+#inject_modal_wrapper .col-xs-3, #inject_layout_wrapper .col-xs-3 {
+	flex-basis: 18.75%;
+	max-width: 18.75%;
+}
+#inject_modal_wrapper .col-xs-4, #inject_layout_wrapper .col-xs-4 {
+	flex-basis: 25%;
+	max-width: 25%;
+}
+#inject_modal_wrapper .col-xs-5, #inject_layout_wrapper .col-xs-5 {
+	flex-basis: 31.25%;
+	max-width: 31.25%;
+}
+#inject_modal_wrapper .col-xs-6, #inject_layout_wrapper .col-xs-6 {
+	flex-basis: 37.5%;
+	max-width: 37.5%;
+}
+#inject_modal_wrapper .col-xs-7, #inject_layout_wrapper .col-xs-7 {
+	flex-basis: 43.75%;
+	max-width: 43.75%;
+}
+#inject_modal_wrapper .col-xs-8, #inject_layout_wrapper .col-xs-8 {
+	flex-basis: 50%;
+	max-width: 50%;
+}
+#inject_modal_wrapper .col-xs-9, #inject_layout_wrapper .col-xs-9 {
+	flex-basis: 56.25%;
+	max-width: 56.25%;
+}
+#inject_modal_wrapper .col-xs-10, #inject_layout_wrapper .col-xs-10 {
+	flex-basis: 62.5%;
+	max-width: 62.5%;
+}
+#inject_modal_wrapper .col-xs-11, #inject_layout_wrapper .col-xs-11 {
+	flex-basis: 68.75%;
+	max-width: 68.75%;
+}
+#inject_modal_wrapper .col-xs-12, #inject_layout_wrapper .col-xs-12 {
+	flex-basis: 75%;
+	max-width: 75%;
+}
+#inject_modal_wrapper .col-xs-13, #inject_layout_wrapper .col-xs-13 {
+	flex-basis: 81.25%;
+	max-width: 81.25%;
+}
+#inject_modal_wrapper .col-xs-14, #inject_layout_wrapper .col-xs-14 {
+	flex-basis: 87.5%;
+	max-width: 87.5%;
+}
+#inject_modal_wrapper .col-xs-15, #inject_layout_wrapper .col-xs-15 {
+	flex-basis: 93.75%;
+	max-width: 93.75%;
+}
+#inject_modal_wrapper .col-xs-16, #inject_layout_wrapper .col-xs-16 {
+	flex-basis: 100%;
+	max-width: 100%;
+}
+#inject_modal_wrapper .off-xs-1, #inject_layout_wrapper .off-xs-1 {
+	margin-left: 6.25%;
+}
+#inject_modal_wrapper .off-xs-2, #inject_layout_wrapper .off-xs-2 {
+	margin-left: 12.5%;
+}
+#inject_modal_wrapper .off-xs-3, #inject_layout_wrapper .off-xs-3 {
+	margin-left: 18.75%;
+}
+#inject_modal_wrapper .off-xs-4, #inject_layout_wrapper .off-xs-4 {
+	margin-left: 25%;
+}
+#inject_modal_wrapper .off-xs-5, #inject_layout_wrapper .off-xs-5 {
+	margin-left: 31.25%;
+}
+#inject_modal_wrapper .off-xs-6, #inject_layout_wrapper .off-xs-6 {
+	margin-left: 37.5%;
+}
+#inject_modal_wrapper .off-xs-7, #inject_layout_wrapper .off-xs-7 {
+	margin-left: 43.75%;
+}
+#inject_modal_wrapper .off-xs-8, #inject_layout_wrapper .off-xs-8 {
+	margin-left: 50%;
+}
+#inject_modal_wrapper .off-xs-9, #inject_layout_wrapper .off-xs-9 {
+	margin-left: 56.25%;
+}
+#inject_modal_wrapper .off-xs-10, #inject_layout_wrapper .off-xs-10 {
+	margin-left: 62.5%;
+}
+#inject_modal_wrapper .off-xs-11, #inject_layout_wrapper .off-xs-11 {
+	margin-left: 68.75%;
+}
+#inject_modal_wrapper .off-xs-12, #inject_layout_wrapper .off-xs-12 {
+	margin-left: 75%;
+}
+#inject_modal_wrapper .off-xs-13, #inject_layout_wrapper .off-xs-13 {
+	margin-left: 81.25%;
+}
+#inject_modal_wrapper .off-xs-14, #inject_layout_wrapper .off-xs-14 {
+	margin-left: 87.5%;
+}
+#inject_modal_wrapper .off-xs-15, #inject_layout_wrapper .off-xs-15 {
+	margin-left: 93.75%;
+}
+#inject_modal_wrapper .off-xs-reset, #inject_layout_wrapper .off-xs-reset {
+	margin-left: 0;
+}
+#inject_modal_wrapper .start-xs, #inject_layout_wrapper .start-xs {
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+}
+#inject_modal_wrapper .center-xs, #inject_layout_wrapper .center-xs {
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+#inject_modal_wrapper .end-xs, #inject_layout_wrapper .end-xs {
+	-webkit-box-pack: end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+}
+#inject_modal_wrapper .top-xs, #inject_layout_wrapper .top-xs {
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+}
+#inject_modal_wrapper .middle-xs, #inject_layout_wrapper .middle-xs {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+#inject_modal_wrapper .bottom-xs, #inject_layout_wrapper .bottom-xs {
+	-webkit-box-align: end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+}
+#inject_modal_wrapper .around-xs, #inject_layout_wrapper .around-xs {
+	-ms-flex-pack: distribute;
+	justify-content: space-around;
+}
+#inject_modal_wrapper .between-xs, #inject_layout_wrapper .between-xs {
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+#inject_modal_wrapper .first-xs, #inject_layout_wrapper .first-xs {
+	-webkit-box-ordinal-group: 0;
+	-ms-flex-order: -1;
+	order: -1;
+}
+#inject_modal_wrapper .last-xs, #inject_layout_wrapper .last-xs {
+	-webkit-box-ordinal-group: 2;
+	-ms-flex-order: 1;
+	order: 1;
+}
+#inject_modal_wrapper .align-l-xs, #inject_layout_wrapper .align-l-xs {
+	text-align: left;
+}
+#inject_modal_wrapper .align-r-xs, #inject_layout_wrapper .align-r-xs {
+	text-align: right;
+}
+#inject_modal_wrapper .align-c-xs, #inject_layout_wrapper .align-c-xs {
+	text-align: center;
+}
+@media only screen and (min-width: 550px) {
+	#inject_modal_wrapper .col-sm-1, #inject_layout_wrapper .col-sm-1 {
+		flex-basis: 6.25%;
+		max-width: 6.25%;
+	}
+	#inject_modal_wrapper .col-sm-2, #inject_layout_wrapper .col-sm-2 {
+		flex-basis: 12.5%;
+		max-width: 12.5%;
+	}
+	#inject_modal_wrapper .col-sm-3, #inject_layout_wrapper .col-sm-3 {
+		flex-basis: 18.75%;
+		max-width: 18.75%;
+	}
+	#inject_modal_wrapper .col-sm-4, #inject_layout_wrapper .col-sm-4 {
+		flex-basis: 25%;
+		max-width: 25%;
+	}
+	#inject_modal_wrapper .col-sm-5, #inject_layout_wrapper .col-sm-5 {
+		flex-basis: 31.25%;
+		max-width: 31.25%;
+	}
+	#inject_modal_wrapper .col-sm-6, #inject_layout_wrapper .col-sm-6 {
+		flex-basis: 37.5%;
+		max-width: 37.5%;
+	}
+	#inject_modal_wrapper .col-sm-7, #inject_layout_wrapper .col-sm-7 {
+		flex-basis: 43.75%;
+		max-width: 43.75%;
+	}
+	#inject_modal_wrapper .col-sm-8, #inject_layout_wrapper .col-sm-8 {
+		flex-basis: 50%;
+		max-width: 50%;
+	}
+	#inject_modal_wrapper .col-sm-9, #inject_layout_wrapper .col-sm-9 {
+		flex-basis: 56.25%;
+		max-width: 56.25%;
+	}
+	#inject_modal_wrapper .col-sm-10, #inject_layout_wrapper .col-sm-10 {
+		flex-basis: 62.5%;
+		max-width: 62.5%;
+	}
+	#inject_modal_wrapper .col-sm-11, #inject_layout_wrapper .col-sm-11 {
+		flex-basis: 68.75%;
+		max-width: 68.75%;
+	}
+	#inject_modal_wrapper .col-sm-12, #inject_layout_wrapper .col-sm-12 {
+		flex-basis: 75%;
+		max-width: 75%;
+	}
+	#inject_modal_wrapper .col-sm-13, #inject_layout_wrapper .col-sm-13 {
+		flex-basis: 81.25%;
+		max-width: 81.25%;
+	}
+	#inject_modal_wrapper .col-sm-14, #inject_layout_wrapper .col-sm-14 {
+		flex-basis: 87.5%;
+		max-width: 87.5%;
+	}
+	#inject_modal_wrapper .col-sm-15, #inject_layout_wrapper .col-sm-15 {
+		flex-basis: 93.75%;
+		max-width: 93.75%;
+	}
+	#inject_modal_wrapper .col-sm-16, #inject_layout_wrapper .col-sm-16 {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+	#inject_modal_wrapper .off-sm-1, #inject_layout_wrapper .off-sm-1 {
+		margin-left: 6.25%;
+	}
+	#inject_modal_wrapper .off-sm-2, #inject_layout_wrapper .off-sm-2 {
+		margin-left: 12.5%;
+	}
+	#inject_modal_wrapper .off-sm-3, #inject_layout_wrapper .off-sm-3 {
+		margin-left: 18.75%;
+	}
+	#inject_modal_wrapper .off-sm-4, #inject_layout_wrapper .off-sm-4 {
+		margin-left: 25%;
+	}
+	#inject_modal_wrapper .off-sm-5, #inject_layout_wrapper .off-sm-5 {
+		margin-left: 31.25%;
+	}
+	#inject_modal_wrapper .off-sm-6, #inject_layout_wrapper .off-sm-6 {
+		margin-left: 37.5%;
+	}
+	#inject_modal_wrapper .off-sm-7, #inject_layout_wrapper .off-sm-7 {
+		margin-left: 43.75%;
+	}
+	#inject_modal_wrapper .off-sm-8, #inject_layout_wrapper .off-sm-8 {
+		margin-left: 50%;
+	}
+	#inject_modal_wrapper .off-sm-9, #inject_layout_wrapper .off-sm-9 {
+		margin-left: 56.25%;
+	}
+	#inject_modal_wrapper .off-sm-10, #inject_layout_wrapper .off-sm-10 {
+		margin-left: 62.5%;
+	}
+	#inject_modal_wrapper .off-sm-11, #inject_layout_wrapper .off-sm-11 {
+		margin-left: 68.75%;
+	}
+	#inject_modal_wrapper .off-sm-12, #inject_layout_wrapper .off-sm-12 {
+		margin-left: 75%;
+	}
+	#inject_modal_wrapper .off-sm-13, #inject_layout_wrapper .off-sm-13 {
+		margin-left: 81.25%;
+	}
+	#inject_modal_wrapper .off-sm-14, #inject_layout_wrapper .off-sm-14 {
+		margin-left: 87.5%;
+	}
+	#inject_modal_wrapper .off-sm-15, #inject_layout_wrapper .off-sm-15 {
+		margin-left: 93.75%;
+	}
+	#inject_modal_wrapper .off-sm-reset, #inject_layout_wrapper .off-sm-reset {
+		margin-left: 0;
+	}
+	#inject_modal_wrapper .start-sm, #inject_layout_wrapper .start-sm {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+	#inject_modal_wrapper .center-sm, #inject_layout_wrapper .center-sm {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+	#inject_modal_wrapper .end-sm, #inject_layout_wrapper .end-sm {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+	}
+	#inject_modal_wrapper .top-sm, #inject_layout_wrapper .top-sm {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+	#inject_modal_wrapper .middle-sm, #inject_layout_wrapper .middle-sm {
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	#inject_modal_wrapper .bottom-sm, #inject_layout_wrapper .bottom-sm {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+	}
+	#inject_modal_wrapper .around-sm, #inject_layout_wrapper .around-sm {
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+	}
+	#inject_modal_wrapper .between-sm, #inject_layout_wrapper .between-sm {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+	#inject_modal_wrapper .first-sm, #inject_layout_wrapper .first-sm {
+		-webkit-box-ordinal-group: 0;
+		-ms-flex-order: -1;
+		order: -1;
+	}
+	#inject_modal_wrapper .last-sm, #inject_layout_wrapper .last-sm {
+		-webkit-box-ordinal-group: 2;
+		-ms-flex-order: 1;
+		order: 1;
+	}
+	#inject_modal_wrapper .align-l-sm, #inject_layout_wrapper .align-l-sm {
+		text-align: left;
+	}
+	#inject_modal_wrapper .align-r-sm, #inject_layout_wrapper .align-r-sm {
+		text-align: right;
+	}
+	#inject_modal_wrapper .align-c-sm, #inject_layout_wrapper .align-c-sm {
+		text-align: center;
+	}
+}
+@media only screen and (min-width: 800px) {
+	#inject_modal_wrapper .col-md-1, #inject_layout_wrapper .col-md-1 {
+		flex-basis: 6.25%;
+		max-width: 6.25%;
+	}
+	#inject_modal_wrapper .col-md-2, #inject_layout_wrapper .col-md-2 {
+		flex-basis: 12.5%;
+		max-width: 12.5%;
+	}
+	#inject_modal_wrapper .col-md-3, #inject_layout_wrapper .col-md-3 {
+		flex-basis: 18.75%;
+		max-width: 18.75%;
+	}
+	#inject_modal_wrapper .col-md-4, #inject_layout_wrapper .col-md-4 {
+		flex-basis: 25%;
+		max-width: 25%;
+	}
+	#inject_modal_wrapper .col-md-5, #inject_layout_wrapper .col-md-5 {
+		flex-basis: 31.25%;
+		max-width: 31.25%;
+	}
+	#inject_modal_wrapper .col-md-6, #inject_layout_wrapper .col-md-6 {
+		flex-basis: 37.5%;
+		max-width: 37.5%;
+	}
+	#inject_modal_wrapper .col-md-7, #inject_layout_wrapper .col-md-7 {
+		flex-basis: 43.75%;
+		max-width: 43.75%;
+	}
+	#inject_modal_wrapper .col-md-8, #inject_layout_wrapper .col-md-8 {
+		flex-basis: 50%;
+		max-width: 50%;
+	}
+	#inject_modal_wrapper .col-md-9, #inject_layout_wrapper .col-md-9 {
+		flex-basis: 56.25%;
+		max-width: 56.25%;
+	}
+	#inject_modal_wrapper .col-md-10, #inject_layout_wrapper .col-md-10 {
+		flex-basis: 62.5%;
+		max-width: 62.5%;
+	}
+	#inject_modal_wrapper .col-md-11, #inject_layout_wrapper .col-md-11 {
+		flex-basis: 68.75%;
+		max-width: 68.75%;
+	}
+	#inject_modal_wrapper .col-md-12, #inject_layout_wrapper .col-md-12 {
+		flex-basis: 75%;
+		max-width: 75%;
+	}
+	#inject_modal_wrapper .col-md-13, #inject_layout_wrapper .col-md-13 {
+		flex-basis: 81.25%;
+		max-width: 81.25%;
+	}
+	#inject_modal_wrapper .col-md-14, #inject_layout_wrapper .col-md-14 {
+		flex-basis: 87.5%;
+		max-width: 87.5%;
+	}
+	#inject_modal_wrapper .col-md-15, #inject_layout_wrapper .col-md-15 {
+		flex-basis: 93.75%;
+		max-width: 93.75%;
+	}
+	#inject_modal_wrapper .col-md-16, #inject_layout_wrapper .col-md-16 {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+	#inject_modal_wrapper .off-md-1, #inject_layout_wrapper .off-md-1 {
+		margin-left: 6.25%;
+	}
+	#inject_modal_wrapper .off-md-2, #inject_layout_wrapper .off-md-2 {
+		margin-left: 12.5%;
+	}
+	#inject_modal_wrapper .off-md-3, #inject_layout_wrapper .off-md-3 {
+		margin-left: 18.75%;
+	}
+	#inject_modal_wrapper .off-md-4, #inject_layout_wrapper .off-md-4 {
+		margin-left: 25%;
+	}
+	#inject_modal_wrapper .off-md-5, #inject_layout_wrapper .off-md-5 {
+		margin-left: 31.25%;
+	}
+	#inject_modal_wrapper .off-md-6, #inject_layout_wrapper .off-md-6 {
+		margin-left: 37.5%;
+	}
+	#inject_modal_wrapper .off-md-7, #inject_layout_wrapper .off-md-7 {
+		margin-left: 43.75%;
+	}
+	#inject_modal_wrapper .off-md-8, #inject_layout_wrapper .off-md-8 {
+		margin-left: 50%;
+	}
+	#inject_modal_wrapper .off-md-9, #inject_layout_wrapper .off-md-9 {
+		margin-left: 56.25%;
+	}
+	#inject_modal_wrapper .off-md-10, #inject_layout_wrapper .off-md-10 {
+		margin-left: 62.5%;
+	}
+	#inject_modal_wrapper .off-md-11, #inject_layout_wrapper .off-md-11 {
+		margin-left: 68.75%;
+	}
+	#inject_modal_wrapper .off-md-12, #inject_layout_wrapper .off-md-12 {
+		margin-left: 75%;
+	}
+	#inject_modal_wrapper .off-md-13, #inject_layout_wrapper .off-md-13 {
+		margin-left: 81.25%;
+	}
+	#inject_modal_wrapper .off-md-14, #inject_layout_wrapper .off-md-14 {
+		margin-left: 87.5%;
+	}
+	#inject_modal_wrapper .off-md-15, #inject_layout_wrapper .off-md-15 {
+		margin-left: 93.75%;
+	}
+	#inject_modal_wrapper .off-md-reset, #inject_layout_wrapper .off-md-reset {
+		margin-left: 0;
+	}
+	#inject_modal_wrapper .start-md, #inject_layout_wrapper .start-md {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+	#inject_modal_wrapper .center-md, #inject_layout_wrapper .center-md {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+	#inject_modal_wrapper .end-md, #inject_layout_wrapper .end-md {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+	}
+	#inject_modal_wrapper .top-md, #inject_layout_wrapper .top-md {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+	#inject_modal_wrapper .middle-md, #inject_layout_wrapper .middle-md {
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	#inject_modal_wrapper .bottom-md, #inject_layout_wrapper .bottom-md {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+	}
+	#inject_modal_wrapper .around-md, #inject_layout_wrapper .around-md {
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+	}
+	#inject_modal_wrapper .between-md, #inject_layout_wrapper .between-md {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+	#inject_modal_wrapper .first-md, #inject_layout_wrapper .first-md {
+		-webkit-box-ordinal-group: 0;
+		-ms-flex-order: -1;
+		order: -1;
+	}
+	#inject_modal_wrapper .last-md, #inject_layout_wrapper .last-md {
+		-webkit-box-ordinal-group: 2;
+		-ms-flex-order: 1;
+		order: 1;
+	}
+	#inject_modal_wrapper .align-l-md, #inject_layout_wrapper .align-l-md {
+		text-align: left;
+	}
+	#inject_modal_wrapper .align-r-md, #inject_layout_wrapper .align-r-md {
+		text-align: right;
+	}
+	#inject_modal_wrapper .align-c-md, #inject_layout_wrapper .align-c-md {
+		text-align: center;
+	}
+}
+@media only screen and (min-width: 1000px) {
+	#inject_modal_wrapper .col-lg-1, #inject_layout_wrapper .col-lg-1 {
+		flex-basis: 6.25%;
+		max-width: 6.25%;
+	}
+	#inject_modal_wrapper .col-lg-2, #inject_layout_wrapper .col-lg-2 {
+		flex-basis: 12.5%;
+		max-width: 12.5%;
+	}
+	#inject_modal_wrapper .col-lg-3, #inject_layout_wrapper .col-lg-3 {
+		flex-basis: 18.75%;
+		max-width: 18.75%;
+	}
+	#inject_modal_wrapper .col-lg-4, #inject_layout_wrapper .col-lg-4 {
+		flex-basis: 25%;
+		max-width: 25%;
+	}
+	#inject_modal_wrapper .col-lg-5, #inject_layout_wrapper .col-lg-5 {
+		flex-basis: 31.25%;
+		max-width: 31.25%;
+	}
+	#inject_modal_wrapper .col-lg-6, #inject_layout_wrapper .col-lg-6 {
+		flex-basis: 37.5%;
+		max-width: 37.5%;
+	}
+	#inject_modal_wrapper .col-lg-7, #inject_layout_wrapper .col-lg-7 {
+		flex-basis: 43.75%;
+		max-width: 43.75%;
+	}
+	#inject_modal_wrapper .col-lg-8, #inject_layout_wrapper .col-lg-8 {
+		flex-basis: 50%;
+		max-width: 50%;
+	}
+	#inject_modal_wrapper .col-lg-9, #inject_layout_wrapper .col-lg-9 {
+		flex-basis: 56.25%;
+		max-width: 56.25%;
+	}
+	#inject_modal_wrapper .col-lg-10, #inject_layout_wrapper .col-lg-10 {
+		flex-basis: 62.5%;
+		max-width: 62.5%;
+	}
+	#inject_modal_wrapper .col-lg-11, #inject_layout_wrapper .col-lg-11 {
+		flex-basis: 68.75%;
+		max-width: 68.75%;
+	}
+	#inject_modal_wrapper .col-lg-12, #inject_layout_wrapper .col-lg-12 {
+		flex-basis: 75%;
+		max-width: 75%;
+	}
+	#inject_modal_wrapper .col-lg-13, #inject_layout_wrapper .col-lg-13 {
+		flex-basis: 81.25%;
+		max-width: 81.25%;
+	}
+	#inject_modal_wrapper .col-lg-14, #inject_layout_wrapper .col-lg-14 {
+		flex-basis: 87.5%;
+		max-width: 87.5%;
+	}
+	#inject_modal_wrapper .col-lg-15, #inject_layout_wrapper .col-lg-15 {
+		flex-basis: 93.75%;
+		max-width: 93.75%;
+	}
+	#inject_modal_wrapper .col-lg-16, #inject_layout_wrapper .col-lg-16 {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+	#inject_modal_wrapper .off-lg-1, #inject_layout_wrapper .off-lg-1 {
+		margin-left: 6.25%;
+	}
+	#inject_modal_wrapper .off-lg-2, #inject_layout_wrapper .off-lg-2 {
+		margin-left: 12.5%;
+	}
+	#inject_modal_wrapper .off-lg-3, #inject_layout_wrapper .off-lg-3 {
+		margin-left: 18.75%;
+	}
+	#inject_modal_wrapper .off-lg-4, #inject_layout_wrapper .off-lg-4 {
+		margin-left: 25%;
+	}
+	#inject_modal_wrapper .off-lg-5, #inject_layout_wrapper .off-lg-5 {
+		margin-left: 31.25%;
+	}
+	#inject_modal_wrapper .off-lg-6, #inject_layout_wrapper .off-lg-6 {
+		margin-left: 37.5%;
+	}
+	#inject_modal_wrapper .off-lg-7, #inject_layout_wrapper .off-lg-7 {
+		margin-left: 43.75%;
+	}
+	#inject_modal_wrapper .off-lg-8, #inject_layout_wrapper .off-lg-8 {
+		margin-left: 50%;
+	}
+	#inject_modal_wrapper .off-lg-9, #inject_layout_wrapper .off-lg-9 {
+		margin-left: 56.25%;
+	}
+	#inject_modal_wrapper .off-lg-10, #inject_layout_wrapper .off-lg-10 {
+		margin-left: 62.5%;
+	}
+	#inject_modal_wrapper .off-lg-11, #inject_layout_wrapper .off-lg-11 {
+		margin-left: 68.75%;
+	}
+	#inject_modal_wrapper .off-lg-12, #inject_layout_wrapper .off-lg-12 {
+		margin-left: 75%;
+	}
+	#inject_modal_wrapper .off-lg-13, #inject_layout_wrapper .off-lg-13 {
+		margin-left: 81.25%;
+	}
+	#inject_modal_wrapper .off-lg-14, #inject_layout_wrapper .off-lg-14 {
+		margin-left: 87.5%;
+	}
+	#inject_modal_wrapper .off-lg-15, #inject_layout_wrapper .off-lg-15 {
+		margin-left: 93.75%;
+	}
+	#inject_modal_wrapper .off-lg-reset, #inject_layout_wrapper .off-lg-reset {
+		margin-left: 0;
+	}
+	#inject_modal_wrapper .start-lg, #inject_layout_wrapper .start-lg {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+	#inject_modal_wrapper .center-lg, #inject_layout_wrapper .center-lg {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+	#inject_modal_wrapper .end-lg, #inject_layout_wrapper .end-lg {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+	}
+	#inject_modal_wrapper .top-lg, #inject_layout_wrapper .top-lg {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+		align-items: flex-start;
+	}
+	#inject_modal_wrapper .middle-lg, #inject_layout_wrapper .middle-lg {
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+	#inject_modal_wrapper .bottom-lg, #inject_layout_wrapper .bottom-lg {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		align-items: flex-end;
+	}
+	#inject_modal_wrapper .around-lg, #inject_layout_wrapper .around-lg {
+		-ms-flex-pack: distribute;
+		justify-content: space-around;
+	}
+	#inject_modal_wrapper .between-lg, #inject_layout_wrapper .between-lg {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+	}
+	#inject_modal_wrapper .first-lg, #inject_layout_wrapper .first-lg {
+		-webkit-box-ordinal-group: 0;
+		-ms-flex-order: -1;
+		order: -1;
+	}
+	#inject_modal_wrapper .last-lg, #inject_layout_wrapper .last-lg {
+		-webkit-box-ordinal-group: 2;
+		-ms-flex-order: 1;
+		order: 1;
+	}
+	#inject_modal_wrapper .align-l-lg, #inject_layout_wrapper .align-l-lg {
+		text-align: left;
+	}
+	#inject_modal_wrapper .align-r-lg, #inject_layout_wrapper .align-r-lg {
+		text-align: right;
+	}
+	#inject_modal_wrapper .align-c-lg, #inject_layout_wrapper .align-c-lg {
+		text-align: center;
+	}
+}
+#inject_modal_wrapper [type=button][disabled],
+#inject_modal_wrapper [type=submit][disabled],
+#inject_modal_wrapper button[disabled], #inject_layout_wrapper [type=button][disabled],
+#inject_layout_wrapper [type=submit][disabled],
+#inject_layout_wrapper button[disabled] {
+	cursor: default;
+	opacity: .5;
+	pointer-events: none;
+}
+#inject_modal_wrapper fieldset, #inject_layout_wrapper fieldset {
+	font-family: "Montserrat", "Helvetica Neue", "Segoe UI", "Verdana", sans-serif;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 2rem;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+}
+#inject_modal_wrapper legend, #inject_layout_wrapper legend {
+	font-weight: bold;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding: 0 1rem;
+	margin-left: -1rem;
+	top: 2px;
+	position: relative;
+	line-height: 0;
+}
+#inject_modal_wrapper input,
+#inject_modal_wrapper textarea,
+#inject_modal_wrapper select, #inject_layout_wrapper input,
+#inject_layout_wrapper textarea,
+#inject_layout_wrapper select {
+	display: block;
+	width: 100%;
+	font-family: "Montserrat", "Helvetica Neue", "Segoe UI", "Verdana", sans-serif;
+	box-sizing: border-box;
+	font-size: 15px;
+	height: 40px;
+	outline: none;
+	vertical-align: middle;
+	background-color: #fff;
+	border: 1px solid #d4d4d4;
+	border-radius: 3px;
+	box-shadow: none;
+	padding: 0 12px;
+}
+#inject_modal_wrapper input.small-input,
+#inject_modal_wrapper textarea.small-input,
+#inject_modal_wrapper select.small-input, #inject_layout_wrapper input.small-input,
+#inject_layout_wrapper textarea.small-input,
+#inject_layout_wrapper select.small-input {
+	height: 30px;
+	padding: 0 12px;
+	border-radius: 3px;
+}
+#inject_modal_wrapper input.large-input,
+#inject_modal_wrapper textarea.large-input,
+#inject_modal_wrapper select.large-input, #inject_layout_wrapper input.large-input,
+#inject_layout_wrapper textarea.large-input,
+#inject_layout_wrapper select.large-input {
+	height: 65px;
+	padding: 0 16px;
+	border-radius: 3px;
+}
+#inject_modal_wrapper input:focus,
+#inject_modal_wrapper textarea:focus,
+#inject_modal_wrapper select:focus, #inject_layout_wrapper input:focus,
+#inject_layout_wrapper textarea:focus,
+#inject_layout_wrapper select:focus {
+	outline: none;
+	background-color: #fff;
+	border-color: #1c86f2;
+	box-shadow: 0 0 1px #1c86f2 inset;
+}
+#inject_modal_wrapper input.error,
+#inject_modal_wrapper textarea.error,
+#inject_modal_wrapper select.error, #inject_layout_wrapper input.error,
+#inject_layout_wrapper textarea.error,
+#inject_layout_wrapper select.error {
+	background-color: rgba(240, 60, 105, 0.1);
+	border: 1px solid #e00e0e;
+}
+#inject_modal_wrapper input.error.error:focus, #inject_modal_wrapper input.error.error:focus, #inject_modal_wrapper input.error.error:focus,
+#inject_modal_wrapper textarea.error.error:focus,
+#inject_modal_wrapper textarea.error.error:focus,
+#inject_modal_wrapper textarea.error.error:focus,
+#inject_modal_wrapper select.error.error:focus,
+#inject_modal_wrapper select.error.error:focus,
+#inject_modal_wrapper select.error.error:focus, #inject_layout_wrapper input.error.error:focus, #inject_layout_wrapper input.error.error:focus, #inject_layout_wrapper input.error.error:focus,
+#inject_layout_wrapper textarea.error.error:focus,
+#inject_layout_wrapper textarea.error.error:focus,
+#inject_layout_wrapper textarea.error.error:focus,
+#inject_layout_wrapper select.error.error:focus,
+#inject_layout_wrapper select.error.error:focus,
+#inject_layout_wrapper select.error.error:focus {
+	border-color: #e00e0e;
+	box-shadow: 0 0 1px #e00e0e inset;
+}
+#inject_modal_wrapper input.success,
+#inject_modal_wrapper textarea.success,
+#inject_modal_wrapper select.success, #inject_layout_wrapper input.success,
+#inject_layout_wrapper textarea.success,
+#inject_layout_wrapper select.success {
+	background-color: rgba(53, 190, 101, 0.1);
+	border: 1px solid #4dbd6f;
+}
+#inject_modal_wrapper input.success.success:focus, #inject_modal_wrapper input.success.success:focus, #inject_modal_wrapper input.success.success:focus,
+#inject_modal_wrapper textarea.success.success:focus,
+#inject_modal_wrapper textarea.success.success:focus,
+#inject_modal_wrapper textarea.success.success:focus,
+#inject_modal_wrapper select.success.success:focus,
+#inject_modal_wrapper select.success.success:focus,
+#inject_modal_wrapper select.success.success:focus, #inject_layout_wrapper input.success.success:focus, #inject_layout_wrapper input.success.success:focus, #inject_layout_wrapper input.success.success:focus,
+#inject_layout_wrapper textarea.success.success:focus,
+#inject_layout_wrapper textarea.success.success:focus,
+#inject_layout_wrapper textarea.success.success:focus,
+#inject_layout_wrapper select.success.success:focus,
+#inject_layout_wrapper select.success.success:focus,
+#inject_layout_wrapper select.success.success:focus {
+	border-color: #4dbd6f;
+	box-shadow: 0 0 1px #4dbd6f inset;
+}
+#inject_modal_wrapper input:disabled, #inject_modal_wrapper input.disabled, #inject_modal_wrapper .radio input[disabled],
+#inject_modal_wrapper .checkbox input[disabled],
+#inject_modal_wrapper .select input[disabled],
+#inject_modal_wrapper .textfield input[disabled], #inject_modal_wrapper .radio [disabled] + input,
+#inject_modal_wrapper .checkbox [disabled] + input,
+#inject_modal_wrapper .select [disabled] + input,
+#inject_modal_wrapper .textfield [disabled] + input,
+#inject_modal_wrapper textarea:disabled,
+#inject_modal_wrapper textarea.disabled,
+#inject_modal_wrapper .radio textarea[disabled],
+#inject_modal_wrapper .checkbox textarea[disabled],
+#inject_modal_wrapper .select textarea[disabled],
+#inject_modal_wrapper .textfield textarea[disabled],
+#inject_modal_wrapper .radio [disabled] + textarea,
+#inject_modal_wrapper .checkbox [disabled] + textarea,
+#inject_modal_wrapper .select [disabled] + textarea,
+#inject_modal_wrapper .textfield [disabled] + textarea,
+#inject_modal_wrapper select:disabled,
+#inject_modal_wrapper select.disabled,
+#inject_modal_wrapper .radio select[disabled],
+#inject_modal_wrapper .checkbox select[disabled],
+#inject_modal_wrapper .select select[disabled],
+#inject_modal_wrapper .textfield select[disabled],
+#inject_modal_wrapper .radio [disabled] + select,
+#inject_modal_wrapper .checkbox [disabled] + select,
+#inject_modal_wrapper .select [disabled] + select,
+#inject_modal_wrapper .textfield [disabled] + select, #inject_layout_wrapper input:disabled, #inject_layout_wrapper input.disabled, #inject_layout_wrapper .radio input[disabled],
+#inject_layout_wrapper .checkbox input[disabled],
+#inject_layout_wrapper .select input[disabled],
+#inject_layout_wrapper .textfield input[disabled], #inject_layout_wrapper .radio [disabled] + input,
+#inject_layout_wrapper .checkbox [disabled] + input,
+#inject_layout_wrapper .select [disabled] + input,
+#inject_layout_wrapper .textfield [disabled] + input,
+#inject_layout_wrapper textarea:disabled,
+#inject_layout_wrapper textarea.disabled,
+#inject_layout_wrapper .radio textarea[disabled],
+#inject_layout_wrapper .checkbox textarea[disabled],
+#inject_layout_wrapper .select textarea[disabled],
+#inject_layout_wrapper .textfield textarea[disabled],
+#inject_layout_wrapper .radio [disabled] + textarea,
+#inject_layout_wrapper .checkbox [disabled] + textarea,
+#inject_layout_wrapper .select [disabled] + textarea,
+#inject_layout_wrapper .textfield [disabled] + textarea,
+#inject_layout_wrapper select:disabled,
+#inject_layout_wrapper select.disabled,
+#inject_layout_wrapper .radio select[disabled],
+#inject_layout_wrapper .checkbox select[disabled],
+#inject_layout_wrapper .select select[disabled],
+#inject_layout_wrapper .textfield select[disabled],
+#inject_layout_wrapper .radio [disabled] + select,
+#inject_layout_wrapper .checkbox [disabled] + select,
+#inject_layout_wrapper .select [disabled] + select,
+#inject_layout_wrapper .textfield [disabled] + select {
+	resize: none;
+	opacity: 0.6;
+	cursor: default;
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.5);
+}
+#inject_modal_wrapper .checkbox input[type=checkbox], #inject_modal_wrapper .radio input[type=radio], #inject_layout_wrapper .checkbox input[type=checkbox], #inject_layout_wrapper .radio input[type=radio] {
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}
+#inject_modal_wrapper .radio, #inject_modal_wrapper .checkbox, #inject_layout_wrapper .radio, #inject_layout_wrapper .checkbox {
+	margin-bottom: 0.4rem;
+	padding: 0 1rem 0 2rem;
+	position: relative;
+}
+#inject_modal_wrapper .radio:before, #inject_modal_wrapper .checkbox:before, #inject_layout_wrapper .radio:before, #inject_layout_wrapper .checkbox:before {
+	background-color: #fff;
+	border: 1px solid #7d7d7e;
+	content: '';
+	height: 16px;
+	left: 0;
+	margin-top: -10px;
+	position: absolute;
+	top: 50%;
+	width: 16px;
+}
+#inject_modal_wrapper .radio__label, #inject_modal_wrapper .checkbox__label, #inject_layout_wrapper .radio__label, #inject_layout_wrapper .checkbox__label {
+	color: #7d7d7e;
+	font-size: 1rem;
+	line-height: 1;
+}
+#inject_modal_wrapper .checkbox:before,
+#inject_modal_wrapper .checkbox__label:after, #inject_layout_wrapper .checkbox:before,
+#inject_layout_wrapper .checkbox__label:after {
+	border-radius: 2px;
+}
+#inject_modal_wrapper .checkbox input[type=checkbox]:checked + .checkbox__label:after, #inject_layout_wrapper .checkbox input[type=checkbox]:checked + .checkbox__label:after {
+	color: #1fb5e9;
+	content: '\2714';
+	font-size: 14px;
+	line-height: 18px;
+	text-align: center;
+}
+#inject_modal_wrapper .radio input[type=radio]:checked + .radio__label:before, #inject_layout_wrapper .radio input[type=radio]:checked + .radio__label:before {
+	background-color: #1fb5e9;
+	border-radius: 20px;
+	content: '';
+	height: 10px;
+	left: 4px;
+	margin-top: -6px;
+	position: absolute;
+	top: 50%;
+	width: 10px;
+}
+#inject_modal_wrapper .radio:before, #inject_modal_wrapper .radio__label:after, #inject_layout_wrapper .radio:before, #inject_layout_wrapper .radio__label:after {
+	border-radius: 20px;
+}
+#inject_modal_wrapper .radio__label:after, #inject_modal_wrapper .checkbox__label:after, #inject_layout_wrapper .radio__label:after, #inject_layout_wrapper .checkbox__label:after {
+	border: 1px solid transparent;
+	content: '';
+	height: 18px;
+	left: -1px;
+	margin-top: -10px;
+	position: absolute;
+	top: 50%;
+	width: 18px;
+}
+#inject_modal_wrapper .radio input[type=radio]:focus + .radio__label:after, #inject_modal_wrapper .checkbox input[type=checkbox]:focus + .checkbox__label:after, #inject_layout_wrapper .radio input[type=radio]:focus + .radio__label:after, #inject_layout_wrapper .checkbox input[type=checkbox]:focus + .checkbox__label:after {
+	border-color: #1fb5e9;
+	box-shadow: 0 1px 7px 1px #cccccc inset;
+	margin-top: -11px;
+}
+#inject_modal_wrapper input[type="file"], #inject_layout_wrapper input[type="file"] {
+	width: auto;
+	border: none;
+	padding: 0;
+	height: auto;
+	background: none;
+	box-shadow: none;
+	display: inline-block;
+}
+#inject_modal_wrapper input[type="search"],
+#inject_modal_wrapper input.search, #inject_layout_wrapper input[type="search"],
+#inject_layout_wrapper input.search {
+	background-repeat: no-repeat;
+	background-position: 8px 53%;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#fff" fill-opacity="0.8" d="M14.891,14.39l-0.5.5a0.355,0.355,0,0,1-.5,0L9.526,10.529a5.3,5.3,0,1,1,2.106-4.212,5.268,5.268,0,0,1-1.1,3.21l4.362,4.362A0.354,0.354,0,0,1,14.891,14.39ZM6.316,2.418a3.9,3.9,0,1,0,3.9,3.9A3.9,3.9,0,0,0,6.316,2.418Z"/></svg>');
+	padding-left: 32px;
+}
+#inject_modal_wrapper input[type="radio"],
+#inject_modal_wrapper input[type="checkbox"], #inject_layout_wrapper input[type="radio"],
+#inject_layout_wrapper input[type="checkbox"] {
+	display: inline-block;
+	width: auto;
+	height: auto;
+	padding: 0;
+}
+#inject_modal_wrapper textarea, #inject_layout_wrapper textarea {
+	height: auto;
+	padding: 8px 12px;
+	line-height: 24px;
+	vertical-align: top;
+}
+#inject_modal_wrapper label, #inject_layout_wrapper label {
+	display: block;
+	font-size: 1rem;
+}
+#inject_modal_wrapper label.checkbox,
+#inject_modal_wrapper label .desc,
+#inject_modal_wrapper label .success,
+#inject_modal_wrapper label .error, #inject_layout_wrapper label.checkbox,
+#inject_layout_wrapper label .desc,
+#inject_layout_wrapper label .success,
+#inject_layout_wrapper label .error {
+	text-transform: none;
+	font-weight: normal;
+}
+#inject_modal_wrapper label.checkbox, #inject_modal_wrapper label.radio, #inject_layout_wrapper label.checkbox, #inject_layout_wrapper label.radio {
+	line-height: 24px;
+	cursor: pointer;
+	color: inherit;
+}
+#inject_modal_wrapper label.checkbox.checkbox input, #inject_modal_wrapper label.radio.checkbox input, #inject_layout_wrapper label.checkbox.checkbox input, #inject_layout_wrapper label.radio.checkbox input {
+	margin-top: 0;
+}
+#inject_modal_wrapper select, #inject_layout_wrapper select {
+	-webkit-appearance: none;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 9 12"><path fill="#5e6c75" d="M0.722,4.823L-0.01,4.1,4.134-.01,4.866,0.716Zm7.555,0L9.01,4.1,4.866-.01l-0.732.726ZM0.722,7.177L-0.01,7.9,4.134,12.01l0.732-.726Zm7.555,0L9.01,7.9,4.866,12.01l-0.732-.726Z"/></svg>');
+	background-repeat: no-repeat;
+	background-position: right 1rem center;
+}
+#inject_modal_wrapper select[multiple], #inject_layout_wrapper select[multiple] {
+	background-image: none;
+	height: auto;
+	padding: .5rem .75rem;
+}
+#inject_modal_wrapper .multiple-checkboxes label.checkbox, #inject_modal_wrapper .multiple-radios label.radio, #inject_layout_wrapper .multiple-checkboxes label.checkbox, #inject_layout_wrapper .multiple-radios label.radio {
+	display: inline-block;
+	margin-right: 16px;
+}
+#inject_modal_wrapper .req, #inject_layout_wrapper .req {
+	position: relative;
+	top: -6px;
+	font-weight: bold;
+	color: #f03c69;
+	font-size: 12px;
+	padding-left: 2px;
+}
+#inject_modal_wrapper .desc, #inject_layout_wrapper .desc {
+	color: rgba(31, 31, 31, 0.5);
+	font-size: 12px;
+	line-height: 20px;
+}
+#inject_modal_wrapper span.desc, #inject_layout_wrapper span.desc {
+	margin-left: 4px;
+}
+#inject_modal_wrapper div.desc, #inject_layout_wrapper div.desc {
+	margin-top: 4px;
+	margin-bottom: -8px;
+}
+#inject_modal_wrapper .form-buttons button,
+#inject_modal_wrapper .form-buttons .button,
+#inject_modal_wrapper .form-buttons [type=button],
+#inject_modal_wrapper .form-buttons [type=submit],
+#inject_modal_wrapper .form-buttons button, #inject_layout_wrapper .form-buttons button,
+#inject_layout_wrapper .form-buttons .button,
+#inject_layout_wrapper .form-buttons [type=button],
+#inject_layout_wrapper .form-buttons [type=submit],
+#inject_layout_wrapper .form-buttons button {
+	margin-right: 8px;
+}
+#inject_modal_wrapper form,
+#inject_modal_wrapper .form-item, #inject_layout_wrapper form,
+#inject_layout_wrapper .form-item {
+	position: relative;
+	padding: 1rem 0 .5rem;
+	margin-bottom: .5rem;
+}
+#inject_modal_wrapper .form > .form-item:last-child, #inject_layout_wrapper .form > .form-item:last-child {
+	margin-bottom: 0;
+}
+#inject_modal_wrapper .form .row:last-child .form-item, #inject_layout_wrapper .form .row:last-child .form-item {
+	margin-bottom: 0;
+}
+#inject_modal_wrapper .form span.success,
+#inject_modal_wrapper .form span.error, #inject_layout_wrapper .form span.success,
+#inject_layout_wrapper .form span.error {
+	font-size: 12px;
+	line-height: 20px;
+	margin-left: 4px;
+}
+#inject_modal_wrapper .form-inline input,
+#inject_modal_wrapper .form-inline textarea,
+#inject_modal_wrapper .form-inline select, #inject_layout_wrapper .form-inline input,
+#inject_layout_wrapper .form-inline textarea,
+#inject_layout_wrapper .form-inline select {
+	display: inline-block;
+	width: auto;
+}
+#inject_modal_wrapper .append,
+#inject_modal_wrapper .prepend, #inject_layout_wrapper .append,
+#inject_layout_wrapper .prepend {
+	display: flex;
+}
+#inject_modal_wrapper .append input,
+#inject_modal_wrapper .prepend input, #inject_layout_wrapper .append input,
+#inject_layout_wrapper .prepend input {
+	flex: 1;
+}
+#inject_modal_wrapper .append .button, #inject_modal_wrapper .append [type=button],
+#inject_modal_wrapper .append [type=submit],
+#inject_modal_wrapper .append button,
+#inject_modal_wrapper .append span,
+#inject_modal_wrapper .prepend .button,
+#inject_modal_wrapper .prepend [type=button],
+#inject_modal_wrapper .prepend [type=submit],
+#inject_modal_wrapper .prepend button,
+#inject_modal_wrapper .prepend span, #inject_layout_wrapper .append .button, #inject_layout_wrapper .append [type=button],
+#inject_layout_wrapper .append [type=submit],
+#inject_layout_wrapper .append button,
+#inject_layout_wrapper .append span,
+#inject_layout_wrapper .prepend .button,
+#inject_layout_wrapper .prepend [type=button],
+#inject_layout_wrapper .prepend [type=submit],
+#inject_layout_wrapper .prepend button,
+#inject_layout_wrapper .prepend span {
+	flex-shrink: 0;
+}
+#inject_modal_wrapper .append span,
+#inject_modal_wrapper .prepend span, #inject_layout_wrapper .append span,
+#inject_layout_wrapper .prepend span {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-weight: normal;
+	border: 1px solid #d4d4d4;
+	background-color: #f8f8f8;
+	padding: 0 .875rem;
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 12px;
+	white-space: nowrap;
+}
+#inject_modal_wrapper .prepend input, #inject_layout_wrapper .prepend input {
+	border-radius: 0 3px 3px 0;
+}
+#inject_modal_wrapper .prepend .button, #inject_modal_wrapper .prepend [type=button],
+#inject_modal_wrapper .prepend [type=submit],
+#inject_modal_wrapper .prepend button, #inject_layout_wrapper .prepend .button, #inject_layout_wrapper .prepend [type=button],
+#inject_layout_wrapper .prepend [type=submit],
+#inject_layout_wrapper .prepend button {
+	margin-right: -1px;
+	border-radius: 3px 0 0 3px !important;
+}
+#inject_modal_wrapper .prepend span, #inject_layout_wrapper .prepend span {
+	border-right: none;
+	border-radius: 3px 0 0 3px;
+}
+#inject_modal_wrapper .append input, #inject_layout_wrapper .append input {
+	border-radius: 3px 0 0 3px;
+}
+#inject_modal_wrapper .append .button, #inject_modal_wrapper .append [type=button],
+#inject_modal_wrapper .append [type=submit],
+#inject_modal_wrapper .append button, #inject_layout_wrapper .append .button, #inject_layout_wrapper .append [type=button],
+#inject_layout_wrapper .append [type=submit],
+#inject_layout_wrapper .append button {
+	margin-left: -1px;
+	border-radius: 0 3px 3px 0 !important;
+}
+#inject_modal_wrapper .append span, #inject_layout_wrapper .append span {
+	border-left: none;
+	border-radius: 0 3px 3px 0;
+}
+#inject_modal_wrapper input[type="date"]::-webkit-clear-button, #inject_layout_wrapper input[type="date"]::-webkit-clear-button {
+	display: none;
+}
+#inject_modal_wrapper input[type="date"]::-webkit-inner-spin-button, #inject_layout_wrapper input[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}
+#inject_modal_wrapper input[type="date"]::-webkit-calendar-picker-indicator, #inject_layout_wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+	color: #2c3e50;
+}
+#inject_modal_wrapper input[type="date"], #inject_layout_wrapper input[type="date"] {
+	appearance: none;
+	-webkit-appearance: none;
+	color: #95a5a6;
+	font-family: "Helvetica", arial, sans-serif;
+	font-size: 18px;
+	border: 1px solid #ecf0f1;
+	background: #ecf0f1;
+	padding: 5px;
+	display: inline-block !important;
+	visibility: visible !important;
+}
+#inject_modal_wrapper input[type="date"], #inject_modal_wrapper focus, #inject_layout_wrapper input[type="date"], #inject_layout_wrapper focus {
+	color: #95a5a6;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+#inject_modal_wrapper ::-webkit-input-placeholder, #inject_layout_wrapper ::-webkit-input-placeholder {
+	/* Chrome/Opera/Safari */
+	color: rgba(255, 255, 255, 0.3);
+}
+#inject_modal_wrapper ::-moz-placeholder, #inject_layout_wrapper ::-moz-placeholder {
+	/* Firefox 19+ */
+	color: rgba(255, 255, 255, 0.3);
+}
+#inject_modal_wrapper :-ms-input-placeholder, #inject_layout_wrapper :-ms-input-placeholder {
+	/* IE 10+ */
+	color: rgba(255, 255, 255, 0.3);
+}
+#inject_modal_wrapper :-moz-placeholder, #inject_layout_wrapper :-moz-placeholder {
+	/* Firefox 18- */
+	color: rgba(255, 255, 255, 0.3);
+}
+
+#inject_modal_wrapper .close:hover, #inject_layout_wrapper .close:hover {
+	opacity: 1;
+	cursor: pointer;
+	background-color: rgba(51, 51, 51, 0.1);
+}
+#inject_modal_wrapper .modal .close:focus, #inject_modal_wrapper .modal .close:active, #inject_layout_wrapper .modal .close:focus, #inject_layout_wrapper .modal .close:active {
+	color: #000;
+	opacity: 1;
+}
+#inject_modal_wrapper .close.small, #inject_layout_wrapper .close.small {
+	font-size: 8px;
+}
+#inject_modal_wrapper .close.big, #inject_layout_wrapper .close.big {
+	font-size: 18px;
+}
+#inject_modal_wrapper .close.white, #inject_layout_wrapper .close.white {
+	color: #fff;
+}
+#inject_modal_wrapper .modal-box, #inject_layout_wrapper .modal-box {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	font-size: 1rem;
+	z-index: 9995;
+	transition: all 300ms ease-out;
+	transform: translateY(-100%);
+	visibility: hidden;
+}
+#inject_modal_wrapper .modal-box.modal-opened, #inject_layout_wrapper .modal-box.modal-opened {
+	transform: translateY(0);
+	visibility: visible;
+}
+#inject_modal_wrapper .modal-wrapper, #inject_layout_wrapper .modal-wrapper {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+#inject_modal_wrapper .modal-wrapper > div, #inject_layout_wrapper .modal-wrapper > div {
+	display: table-cell;
+	vertical-align: middle;
+}
+.modal-wrapper .modal{
+	position: relative;
+	margin: 2% auto;
+	padding: 0;
+	background: #fff;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.44);
+	border-radius: 2px;
+}
+#inject_modal_wrapper .modal p, #inject_layout_wrapper .modal p {
+	padding-bottom: 0;
+}
+#inject_modal_wrapper .modal p:only-child, #inject_layout_wrapper .modal p:only-child {
+	margin-bottom: 0;
+}
+#inject_modal_wrapper .modal p:last-child, #inject_layout_wrapper .modal p:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+@media (max-width: 768) {
+	#inject_modal_wrapper .modal input, #inject_modal_wrapper .modal textarea, #inject_layout_wrapper .modal input, #inject_layout_wrapper .modal textarea {
+		font-size: 16px;
+	}
+}
+#inject_modal_wrapper .close, #inject_layout_wrapper .close {
+	font-family: 'themify';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	min-height: 16px;
+	min-width: 16px;
+	line-height: 16px;
+	vertical-align: middle;
+	text-align: center;
+	opacity: .6;
+}
+#inject_modal_wrapper .modal-wrapper .modal .close {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	opacity: 1;
+	font-size: 1.2rem;
+	padding: 28px 25px;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-ms-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+#inject_modal_wrapper .modal-wrapper .modal .close:hover, #inject_modal_wrapper .modal-wrapper .modal .close:focus,  #inject_modal_wrapper .modal-wrapper .modal .close:active {
+	background-color: rgba(0, 0, 0, 0.3);
+	color: #fff;
+}
+
+.modal-wrapper .modal-header {
+	padding: 20px 56px 10px 22px;
+	border-bottom: 1px solid #201d48;
+}
+.modal-wrapper .modal-header:empty {
+	display: none;
+}
+#inject_modal_wrapper .modal-overlay, #inject_layout_wrapper .modal-overlay {
+	position: fixed;
+	z-index: 9994;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(99, 99, 99, 0.85);
+}
+@media (max-width: 768) {
+	#inject_modal_wrapper .modal-header,
+	#inject_modal_wrapper .modal-body, #inject_layout_wrapper .modal-header,
+	#inject_layout_wrapper .modal-body {
+		padding: 24px;
+	}
+}
+#inject_modal_wrapper #tooltip_container, #inject_layout_wrapper #tooltip_container {
+	color: #fff;
+	position: absolute;
+	padding: 12px 16px;
+	max-width: 200px;
+	background: rgba(3, 3, 3, 0.85);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	display: none;
+	font-size: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* // NEW LAYOUT */
+#inject_layout_wrapper .info-bar, #inject_layout_wrapper .sortable_container {
+	background-color: #dcdcdc;
+}
+#inject_layout_wrapper .logo, #inject_layout_wrapper .layout_nav {
+	background-color: #353265;
+	text-align: center;
+}
+#inject_layout_wrapper .layout_nav, #inject_layout_wrapper .layout_nav .helper {
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+#inject_layout_wrapper .logo {
+	padding: 0.6rem 0 1rem;
+}
+#inject_layout_wrapper .layout_nav {
+	position: relative;
+	min-height: 504px;
+}
+#inject_layout_wrapper .layout_nav a {
+	text-decoration: none;
+	color: #fff;
+	display: block;
+	padding: 1rem 0;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-ms-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+#inject_layout_wrapper .layout_nav .helper {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+#inject_layout_wrapper .layout_nav .helper ul, #inject_layout_wrapper .layout_nav .helper ul li {
+	margin: 0;
+}
+#inject_layout_wrapper .layout_nav .helper a {
+	color: rgba(255, 255, 255, 0.63);
+	padding: 1rem 0 0.5rem;
+}
+#inject_layout_wrapper .layout_nav a:hover {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#inject_layout_wrapper .layout_nav .helper a:hover {
+	color: #fff;
+}
+#inject_layout_wrapper .layout_nav .icon {
+	display: block;
+	font-size: 1.5rem;
+	text-align: center;
+	line-height: 1.3em;
+}
+#inject_layout_wrapper .layout_nav .linkname {
+	display: block;
+	text-align: center;
+}
+#inject_layout_wrapper .temp-empty_container {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+#inject_layout_wrapper .temp-empty_container .empty_text{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+#inject_layout_wrapper .temp-empty_container .empty_text a {
+	padding: 1rem;
+	margin: 0 18px;
+	display: inline-block;
+	text-decoration: none;
+	color: white;
+	background-color: #4d498a;
+	border-radius: 2px;
+}
+#inject_layout_wrapper .temp-empty_container .empty_text a:hover, #inject_layout_wrapper .temp-empty_container .empty_text a:focus, #inject_layout_wrapper .temp-empty_container .empty_text a:active {
+	background-color: #3b3969;
+}
+#inject_layout_wrapper .temp-empty_container .empty_text h2, #inject_layout_wrapper .temp-empty_container .empty_text h3{
+	font-weight: 100;
+}
+#inject_layout_wrapper .temp-empty_container .empty_text h2{
+	font-size: 3.3em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#inject_modal_wrapper .modal{
+	background-color: #2b2958;
+	color:  white;
+}
+
+#inject_modal_wrapper input#element_search{
+	background-color: #201d48;
+	border: 1px solid #676586;
+	font-weight: 300;
+	color: #fff;
+}
+#inject_modal_wrapper input#element_search:focus, #inject_modal_wrapper input#element_search:active{
+	outline: none;
+	border-color: #ffffff;
+	box-shadow: 0 0 1px #1c86f2 inset;
+}
+
+.select_elements_modal .elements-categories {
+	padding-bottom: .2rem;
+}
+.select_elements_modal .elements-categories ul{
+	margin: 0;
+	text-align: center;
+}
+.select_elements_modal .elements-categories li{
+	display: inline-block;
+	margin-right: 20px;
+}
+.select_elements_modal .elements-categories a{
+	text-decoration: none;
+	color: #8a8a8a;
+	font-size: .85rem;
+	padding: 12px 12px 2px;
+	text-transform: uppercase;
+	display: block;
+	border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+.select_elements_modal .elements-categories a:hover, .select_elements_modal .elements-categories a:focus, .select_elements_modal .elements-categories a:active {
+	color: #fff;
+	-webkit-box-shadow: 0 0 0 0;
+	box-shadow: 0 0 0 0;
+}
+.select_elements_modal .elements-categories a.active{
+	color: #fff;
+	border-bottom: 2px solid #fff;
+}
+
+.select_elements_modal .modal-body #elements_list {
+	margin: 0;
+	padding: 1.8rem;
+}
+.select_elements_modal .modal-body #elements_list .shortcode-single-element{
+	background-color: #2b2958;
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+	margin-top: 16px;
+	padding: 0px 12px 12px 12px;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-ms-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+	border: 2px solid rgba(0, 0, 0, 0);
+}
+.select_elements_modal #elements_list .shortcode-single-element:hover, .select_elements_modal #elements_list .shortcode-single-element:focus, .select_elements_modal #elements_list .shortcode-single-element:active {
+	border: 2px solid #4f4c98
+}
+.select_elements_modal #elements_list .shortcode-single-element:hover .item-info{
+	color: #fff;
+}
+.select_elements_modal #elements_list .shortcode-icon .icon{
+	display: block;
+	font-size: 2rem;
+	text-align: center;
+}
+.select_elements_modal #elements_list .item-title{
+	color: #fff;
+	margin: 0;
+	font-size: 1.05rem;
+	font-weight: 100;
+	text-align: center;
+	margin-bottom: 10px;
+	position: relative;
+}
+.select_elements_modal .modal-body #elements_list .item-title:after{
+	content: "";
+	position: absolute;
+	bottom: -3px;
+	left: 42%;
+	width: 15%;
+	height: 1px;
+	background-color: rgba(255, 255, 255, 0.20);
+}
+.select_elements_modal .modal-body #elements_list .item-info{
+	margin: 0;
+	font-size: 0.8rem;
+	font-weight: 300;
+	font-family: "Montserrat", "Helvetica Neue", "Segoe UI", "Verdana", sans-serif;
+	color: rgba(255, 255, 255, 0.25);
+	line-height: 1.25rem;
+	text-align: center;
+	max-height: 40px;
+	overflow: hidden;
+	min-height: 40px;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+}
+#inject_modal_wrapper .modal-body .modal-content {
+	background-color: #201d48;
+}
+#inject_modal_wrapper .modal-header h2{
+	margin: 0;
+	color: white;
+	font-size: 1.35em;
+	font-family: "Varela Round", Arial, Sans-Serif;
+	font-weight: 100;
+}

@@ -5,16 +5,7 @@ $editor=(isset($_GET['editor']) && $_GET['editor']!='') ? $_GET['editor'] : 'dnd
 
 
 $data = '
-<div class="il_shortcode_info col-lg-8">
-	<p>'. __( "Search or pick a shortcode from the list. To edit shortcode highlight shortcode in editor before clicking (Add/Edit Shortcode) button.", "inject-builder") .'</p>
-</div>
-<div class="col-lg-4 ilb_search_shortcode">
-<div class="form-item">
-          <input type="search" name="shortcode_search" placeholder="'. __("Search for element", "inject-builder") .'" id="shortcode_search">
-     </div>
-</div>
-<div class="col-lg-12 ilb_shortcode_display">
-	<ul id="ilb_element_list" class="row">';
+	<ul id="elements_list" class="row with-gutter">';
 
 
 		foreach ( $this->shortcodes->shortcodes('registered') as $name => $shortcode ) {
@@ -28,30 +19,71 @@ $data = '
 
 				$description = (isset($shortcode['description'])) ? $shortcode['description'] : $prettifed_name;
 
-				$data .= '<li class="ilb_shortcode_element col-lg-2" data-shortcode="'.$name.'"><div class="shortcode-single-element">
-						<div class="shortcode-image">
-							<img src="http://localhost/wordpress/wp-content/plugins/ilb/admin/assets/placeholder.jpg" alt="">
-						</div>
-						<div class="ilb_element_meta">
-						<h3 class="item-title">' . $description . '</h3>
-						<h4 class="item-info">This is a description of shortcode element</h4>
-						</div></div></li><li class="ilb_shortcode_element col-lg-2" data-shortcode="'.$name.'"><div class="shortcode-single-element">
-						<div class="shortcode-image">
-							<img src="http://localhost/wordpress/wp-content/plugins/ilb/admin/assets/placeholder.jpg" alt="">
-						</div>
-						<div class="ilb_element_meta">
-						<h3 class="item-title">' . $description . '</h3>
-						<h4 class="item-info">This is a description of shortcode element</h4>
-						</div></div></li><li class="ilb_shortcode_element col-lg-2" data-shortcode="'.$name.'"><div class="shortcode-single-element">
-						<div class="shortcode-image">
-							<img src="http://localhost/wordpress/wp-content/plugins/ilb/admin/assets/placeholder.jpg" alt="">
-						</div>
-						<div class="ilb_element_meta">
-						<h3 class="item-title">' . $description . '</h3>
-						<h4 class="item-info">This is a description of shortcode element</h4>
-						</div></div></li>';
+				$data .= '	<li class="shortcode_element cat-social col-lg-4"  data-shortcode="'.$name.'">
+							<a class="shortcode-single-element" href="#0" data-component="settings-modal" data-modal-target="#selected_element_modal">
+								<div class="shortcode-icon"><span class="icon ti-layout-tab"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is another a man of shortcode element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-social cat-wordpress col-lg-4"  data-shortcode="'.$name.'" data-component="settings-modal" data-modal-target="#selected_element_modal">
+							<a class="shortcode-single-element" href="#0">
+								<div class="shortcode-icon"><span class="icon ti-bar-chart-alt"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a dadday of shortcode element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-woocommerce col-lg-4"  data-shortcode="'.$name.'" data-component="settings-modal" data-modal-target="#selected_element_modal">
+							<a class="shortcode-single-element" href="#0">
+								<div class="shortcode-icon"><span class="icon ti-announcement"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a perfect of shortcode element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-other col-lg-4"  data-shortcode="'.$name.'">
+							<a class="shortcode-single-element" href="#0" data-component="settings-modal" data-modal-target="#selected_element_modal">
+								<div class="shortcode-icon"><span class="icon ti-layout-tab"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a woocommerc of shortcode element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-woocommerce col-lg-4"  data-shortcode="'.$name.'" data-component="settings-modal" data-modal-target="#selected_element_modal">
+							<a class="shortcode-single-element" href="#0">
+								<div class="shortcode-icon"><span class="icon ti-bar-chart-alt"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a brah of shortcode element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-basic col-lg-4"  data-shortcode="'.$name.'">
+							<a class="shortcode-single-element" href="#0" data-component="settings-modal" data-modal-target="#selected_element_modal">
+								<div class="shortcode-icon"><span class="icon ti-announcement"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a fuck of shortcode element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-wordpress col-lg-4"  data-shortcode="'.$name.'">
+							<a class="shortcode-single-element" href="#0" data-component="settings-modal" data-modal-target="#selected_element_modal">
+								<div class="shortcode-icon"><span class="icon ti-layout-tab"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a oh of damn element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-social col-lg-4"  data-shortcode="'.$name.'">
+							<a class="shortcode-single-element" href="#0" data-component="settings-modal" data-modal-target="#selected_element_modal">
+								<div class="shortcode-icon"><span class="icon ti-bar-chart-alt"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a good of shortcode element</h4>
+							</a>
+						</li>
+						<li class="shortcode_element cat-other col-lg-4"  data-shortcode="'.$name.'">
+							<a class="shortcode-single-element" href="#0" data-component="settings-modal" data-modal-target="#selected_element_modal">
+								<div class="shortcode-icon"><span class="icon ti-announcement"></span></div>
+								<h3 class="item-title">' . $description . '</h3>
+								<h4 class="item-info">This is a amazing of shortcode element</h4>
+							</a>
+						</li>';
 			}
 		}
 
-$data .='</ul></div>';
+$data .='</ul><script>modal(\'[data-component="settings-modal"]\');</script>';
 

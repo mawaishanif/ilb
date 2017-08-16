@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
 	"use strict";
 
+console.log('loading')
 
 
 
@@ -234,7 +235,7 @@ function generate_from_editor(content){
 					output += '<span class="element_name">'+element_name+element_content+'</span>';
 					output += '<span class="dnd_element_delete" title="'+dnd_from_WP.delete_element+'"></span><span class="dnd_element_duplicate" title="'+dnd_from_WP.duplicate_element+'"></span><span class="dnd_element_edit" title="'+dnd_from_WP.edit_element+'"></span></div>';
 				});
-				output += '<span class="dnd_add_element" data-component="modal" data-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span><p>'+$(this).attr("span")+'/12</p>';
+				output += '<span class="dnd_add_element" data-component="modal" data-modal-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span><p>'+$(this).attr("span")+'/12</p>';
 				output += '</div>';
 			});
 			output += '</div>';
@@ -256,10 +257,10 @@ function generate_from_editor(content){
 			}
 		});
 		if(no_of_sections===0){
-			$("#dnd_dragdrop_empty").show();
+			$(".temp-empty_container").show();
 		}
 		else{
-			$("#dnd_dragdrop_empty").hide();
+			$(".temp-empty_container").hide();
 		}
 	}
 
@@ -323,6 +324,7 @@ function generate_from_editor(content){
 			var resize_grid = Math.floor(resize_sectionWidth/12);
 			$(this).children('.dnd_column').each(function(){
 				var resize_col_width = $(this).data("column_span")*resize_grid;
+				console.log(resize_col_width);
 				$(this).css("width", resize_col_width+"px");
 				var max_width = $(this).width() + $(this).next().width();
 				if($(this).hasClass('ui-resizable')){
@@ -429,13 +431,16 @@ function content_into_modal (selector, header_text, content) {
 	                        <div class="modal-wrapper">\
 	                        <div>\
 	                        <div class="modal row">\
-	                        <div class="modal-header col-lg-16" id="modal_heading" tabindex="0"><h2>\
-	                        '+ header_text +'\
-	                        </h2>\
-	                        <span class="close" tabindex="1" title="Close modal dialog of choosing shortcode elements"></span>\
+	                        <div class="modal-header col-lg-16" id="modal_heading" tabindex="0">\
+	                        	<div class="row">\
+	                        		<div class="header-text col-lg-10">\
+	                        			<h2>'+ header_text +'</h2>\
+	                        			<span class="close" tabindex="1" title="Close modal dialog of choosing shortcode elements"></span>\
+	                        		</div> \
+	                        	</div>\
 	                        </div>\
 	                        <div class="modal-body col-lg-16">\
-	                        <div class="modal-content row">' + content + '</div>\
+	                        	<div class="modal-content row">' + content + '</div>\
 	                        </div>\
 	                        </div>\
 	                        </div>\
@@ -458,7 +463,7 @@ function elements_into_modal (selector, header_text, content) {
 	                        		<div class="search-bar col-lg-5"><input id="element_search" type="search" name="element_search" value="" placeholder="Search element"></div>\
 	                        	</div>\
 	                        </div>\
-	                        <div class="modal-body col-lg-16"><div class="elements-categories"><ul><li><a href="#0" data-filter="all" class="active">All</a></li><li><a href="#0" data-filter="basic">Basic</a></li><li><a data-filter="social" href="#0">Social</a></li><li><a data-filter="woocommerce" href="#0">WooCommerce</a></li><li><a href="#0" data-filter="wordpress">Wordpress</a></li><li><a href="#0" data-filter="other">Other</a></li></ul></div>' + content + '</div>\
+	                        <div class="modal-body col-lg-16"><div class="elements-categories"><ul><li><a href="#0" data-filter="all" class="active">All</a></li><li><a href="#0" data-filter="basic">Basic</a></li><li><a data-filter="social" href="#0">Social</a></li><li><a data-filter="woocommerce" href="#0">WooCommerce</a></li><li><a href="#0" data-filter="wordpress">Wordpress</a></li><li><a href="#0" data-filter="other">Other</a></li></ul></div><div class="modal-content">' + content + '</div></div>\
 	                        </div>\
 	                        </div>\
 	                        </div></div></div>');
@@ -509,7 +514,7 @@ $("#wp-content-editor-container").after('<div id="inject_layout_wrapper">\
 	                                        		<div class="main_nav">\
 	                                        		<ul>\
 	                                       			<li>\
-	                                       				<a href="#0" data-component="modal" data-target="#select_elements_modal">\
+	                                       				<a href="#0" data-component="modal" data-modal-target="#select_elements_modal">\
 	                                       					<span class="icon ti-layout-grid2"></span>\
 	                                       					<span class="linkname">Elements</span>\
 	                                       				</a>\
@@ -540,7 +545,7 @@ $("#wp-content-editor-container").after('<div id="inject_layout_wrapper">\
 	                                        		</div>\
 	                                        	</div>\
 	                                        	<div class="sortable_container col-lg-14">\
-	                                        		<div class="temp-empty_container"><div class="empty_text"><h2>It\'s lonely here :(</h2><h3>Fill me up by adding elements ^_^</h3><div class="empty_btns"><a href="#0" data-component="modal" data-target="#select_elements_modal">Add Element</a><a href="#0">Add Pre-built Layout</a></div></div></div>\
+	                                        		<div class="temp-empty_container"><div class="empty_text"><h2>It\'s lonely here :(</h2><h3>Fill me up by adding elements ^_^</h3><div class="empty_btns"><a href="#0" data-component="modal" data-modal-target="#select_elements_modal">Add Element</a><a href="#0">Add Pre-built Layout</a></div></div></div>\
 	                                        	</div>\
                                         	</div>\
                                         </div>\
@@ -550,7 +555,7 @@ $("#wp-content-editor-container").after('<div id="inject_layout_wrapper">\
 
 $("#wp-content-editor-container").after('<div class="inject_layout_wrapper"><div id="dnd_tools"></div></div>');
 
-$(".inject_layout_wrapper").append('<div id="dnd_dragdrop_empty"><br><a id="dnd_add_section_second">'+dnd_from_WP.add_section+'</a></div>');
+// $(".inject_layout_wrapper").append('<div id=.temp-empty_container"><br><a id="dnd_add_section_second">'+dnd_from_WP.add_section+'</a></div>');
 
 $("#insert-media-button").after('<a id="dnd_shortcode_button" class="button insert-shortcode" title="'+dnd_from_WP.add_edit_shortcode+'">'+dnd_from_WP.add_edit_shortcode+'</a>');
 //=====================================================================
@@ -600,7 +605,8 @@ var fancybox_options = {
 	var $builder_launcher = $("#il_builder-trigger");
 
 	// MAIN BUILDER CONTAINER that contains all dragable elements
-	var $dd_tab_content = $(".inject_layout_wrapper");
+	// var $dd_tab_content = $(".inject_layout_wrapper");
+	var $dd_tab_content = $(".sortable_container");
 
 	// TOP BAR that is appending on top of MAIN BUILDER CONTAINER
 	var $builder_header = $("#dnd_tools");
@@ -668,99 +674,99 @@ var fancybox_options = {
 
 
 
-	// Checking if user was already  using our builder then show up the Builder instead of WP_editor
-	if($.cookie('dnd_dd_activated') === 'activated'){
-		activate_from_cookie();
+// Checking if user was already  using our builder then show up the Builder instead of WP_editor
+if($.cookie('dnd_dd_activated') === 'activated'){
+	activate_from_cookie();
+}
+
+// Launch the builder if it's not currently open or close it because user want's to go back - ITS A TOGGLER
+$builder_launcher.click(function(e){
+	e.preventDefault();
+	toggle_builder();
+});
+
+
+// It add section from bottom OR from where it is empty ..clicked...it will add section with buttons to add elements and remove empty section bcoz it is no long empty
+$("#dnd_add_section_second, #dnd_add_section_bottom").click(function(e){
+	e.preventDefault();
+	$(".temp-empty_container").hide();
+	$dd_tab_content.append('<div class="dnd_content_section">'
+	                       +'<span class="dnd_section_handler" title="'+dnd_from_WP.rearange_sections+'"></span>'
+	                       +'<span class="dnd_section_delete" title="'+dnd_from_WP.delete_section+'"></span>'
+	                       +'<span class="dnd_section_duplicate" title="'+dnd_from_WP.duplicate_section+'"></span>'
+	                       +'<span class="dnd_section_edit" title="'+dnd_from_WP.edit_section+'"></span>'
+	                       +'<span class="dnd_remove_column dnd_disabled" title="'+dnd_from_WP.remove_column+'"></span>'
+	                       +'<span class="dnd_add_column" title="'+dnd_from_WP.add_column+'"></span>'
+	                       +'<div class="dnd_column" data-column_span="12">'
+	                       +'<span class="dnd_add_element" data-component="modal" data-modal-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span>'
+	                       +'<span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span>'
+	                       +'<p>12/12</p>'
+	                       +'</div></div>');
+	make_elements_sortable();
+	rebuild_widths();
+	write_to_editor();
+});
+
+
+$(document).on('click', '.dnd_add_column' , function(e) {
+	e.preventDefault();
+	if($(this).hasClass('dnd_disabled')){
+		return;
 	}
-
-	// Launch the builder if it's not currently open or close it because user want's to go back - ITS A TOGGLER
-	$builder_launcher.click(function(e){
-		e.preventDefault();
-		toggle_builder();
+	var $parent = $(this).parent();
+	$parent.append('<div class="dnd_column"><span class="dnd_add_element" data-component="modal" data-modal-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span></div>');
+	var count = $parent.children('.dnd_column').length;
+	if(count==12){
+		$(this).addClass('dnd_disabled');
+	}
+	$parent.find('.dnd_remove_column').removeClass('dnd_disabled');
+	var column_width = Math.floor($parent.width()/count);
+	$parent.children('.dnd_column').each(function(){
+		$(this).css("width", column_width+"px");
 	});
-
-
-	// It add section from bottom OR from where it is empty ..clicked...it will add section with buttons to add elements and remove empty section bcoz it is no long empty
-	$("#dnd_add_section_second, #dnd_add_section_bottom").click(function(e){
-		e.preventDefault();
-		$("#dnd_dragdrop_empty").hide();
-		$dd_tab_content.append('<div class="dnd_content_section">'
-		                       +'<span class="dnd_section_handler" title="'+dnd_from_WP.rearange_sections+'"></span>'
-		                       +'<span class="dnd_section_delete" title="'+dnd_from_WP.delete_section+'"></span>'
-		                       +'<span class="dnd_section_duplicate" title="'+dnd_from_WP.duplicate_section+'"></span>'
-		                       +'<span class="dnd_section_edit" title="'+dnd_from_WP.edit_section+'"></span>'
-		                       +'<span class="dnd_remove_column dnd_disabled" title="'+dnd_from_WP.remove_column+'"></span>'
-		                       +'<span class="dnd_add_column" title="'+dnd_from_WP.add_column+'"></span>'
-		                       +'<div class="dnd_column" data-column_span="12">'
-		                       +'<span class="dnd_add_element" data-component="modal" data-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span>'
-		                       +'<span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span>'
-		                       +'<p>12/12</p>'
-		                       +'</div></div>');
-		make_elements_sortable();
-		rebuild_widths();
-		write_to_editor();
+	out_of_grid($parent);
+	columns_spans($parent);
+	var grid = Math.floor(total_width($parent)/12);
+	$parent.children('.dnd_column.ui-resizable').resizable("option", {
+		grid: [ grid, 10 ],
+		minWidth: grid
 	});
+	make_elements_resizable();
+	make_elements_sortable();
+	rebuild_widths();
+	write_to_editor();
+});
 
 
-	$(document).on('click', '.dnd_add_column' , function(e) {
-		e.preventDefault();
-		if($(this).hasClass('dnd_disabled')){
-			return;
-		}
-		var $parent = $(this).parent();
-		$parent.append('<div class="dnd_column"><span class="dnd_add_element" data-component="modal" data-target="#choose-element" title="'+dnd_from_WP.add_element+'"></span><span class="dnd_column_edit" title="'+dnd_from_WP.edit_column+'"></span></div>');
-		var count = $parent.children('.dnd_column').length;
-		if(count==12){
-			$(this).addClass('dnd_disabled');
-		}
-		$parent.find('.dnd_remove_column').removeClass('dnd_disabled');
-		var column_width = Math.floor($parent.width()/count);
-		$parent.children('.dnd_column').each(function(){
-			$(this).css("width", column_width+"px");
-		});
-		out_of_grid($parent);
-		columns_spans($parent);
-		var grid = Math.floor(total_width($parent)/12);
-		$parent.children('.dnd_column.ui-resizable').resizable("option", {
-			grid: [ grid, 10 ],
-			minWidth: grid
-		});
-		make_elements_resizable();
-		make_elements_sortable();
-		rebuild_widths();
-		write_to_editor();
+$(document).on('click', '.dnd_remove_column' , function(e) {
+	e.preventDefault();
+	if($(this).hasClass('dnd_disabled')){
+		return;
+	}
+	var $parent = $(this).parent();
+	var $last_column = $parent.find('.dnd_column:last-child');
+	$last_column.find('.dnd_element').each(function(){
+		$(this).detach().appendTo($last_column.prev());
 	});
-
-
-	$(document).on('click', '.dnd_remove_column' , function(e) {
-		e.preventDefault();
-		if($(this).hasClass('dnd_disabled')){
-			return;
-		}
-		var $parent = $(this).parent();
-		var $last_column = $parent.find('.dnd_column:last-child');
-		$last_column.find('.dnd_element').each(function(){
-			$(this).detach().appendTo($last_column.prev());
-		});
-		$last_column.remove();
-		var count = $parent.children('.dnd_column').length;
-		$parent.find('.dnd_add_column').removeClass('dnd_disabled');
-		var column_width = Math.floor($parent.width()/count);
-		$parent.children('.dnd_column').each(function(){
-			$(this).css("width", column_width+"px");
-		});
-		if(count==1){
-			$(this).addClass('dnd_disabled');
-			$parent.children('.dnd_column').resizable("destroy");
-		}
-		else{
-			$parent.children('.dnd_column:last-child').resizable("destroy");
-		}
-		out_of_grid($parent);
-		columns_spans($parent);
-		rebuild_widths();
-		write_to_editor();
+	$last_column.remove();
+	var count = $parent.children('.dnd_column').length;
+	$parent.find('.dnd_add_column').removeClass('dnd_disabled');
+	var column_width = Math.floor($parent.width()/count);
+	$parent.children('.dnd_column').each(function(){
+		$(this).css("width", column_width+"px");
 	});
+	if(count==1){
+		$(this).addClass('dnd_disabled');
+		$parent.children('.dnd_column').resizable("destroy");
+	}
+	else{
+		$parent.children('.dnd_column:last-child').resizable("destroy");
+	}
+	out_of_grid($parent);
+	columns_spans($parent);
+	rebuild_widths();
+	write_to_editor();
+});
 
 
 // delete section or element
@@ -784,7 +790,7 @@ $(document).on('click', '.dnd_section_delete, .dnd_element_delete' , function(e)
 			rebuild_widths();
 			write_to_editor();
 			if(no_of_sections === 0 && is_section){
-				$("#dnd_dragdrop_empty").show();
+				$(".temp-empty_container").show();
 			}
 		});
 	}
@@ -831,7 +837,7 @@ $(document).on('click', '.dnd_section_duplicate' , function(e) {
 
 
 var data = {
-	action: 'builder_admin_layout',
+	action: 'builder_admin_layout'
 };
 $.post(ajaxurl, data, function(response) {
 	if (response.success == true) {
@@ -886,6 +892,17 @@ $(document).on('click', '.dnd_select_shortcode' , function(e) {
 	});
 });
 
+content_into_modal('selected_element_modal', 'Alert Box', 'Hello World');
+
+$(document).on('click', '.shortcode_element' , function(e) {
+	e.preventDefault();
+	console.log('li')
+	$( "#inject_modal_wrapper .select_elements_modal span.close" ).trigger( "click" );
+	var overlay = $('#modal-overlay');
+	overlay.addClass('modal-overlay');
+	overlay.removeClass('display-none');
+	disableBodyScroll();
+});
 
 
 // Add child
@@ -1224,5 +1241,5 @@ $(document).on( "keyup", '#element_search', function() {
 		}
 	});
 });
-
+console.log('loadedd!!')
 });

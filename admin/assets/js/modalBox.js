@@ -44,8 +44,9 @@ function disableBodyScroll(){
   	if (jQuery(selector).length !== 0) {
   		jQuery(selector).click(function (e) {
   			e.preventDefault();
-  			if(!jQuery(this).hasAttr('data-target') || jQuery(this).attr('data-target') == "" ) {
-				//target didn't have DATA-TARGET attribute or it is EMPTY, so i'm doing nothing!
+  			console.log('clicked')
+  			if(!jQuery(this).hasAttr('data-modal-target') || jQuery(this).attr('data-modal-target') == "" ) {
+				//target didn't have DATA-modal-TARGET attribute or it is EMPTY, so i'm doing nothing!
 				return;
 			}
 
@@ -56,22 +57,17 @@ function disableBodyScroll(){
 				jQuery('body').prepend(overlay);
 			}
 			overlay.addClass('modal-overlay');
-			targetID = jQuery(this).attr('data-target');
+			overlay.removeClass('display-none');
+			
+			targetID = jQuery(this).attr('data-modal-target');
 			target = jQuery('body').find(targetID);
 
-			var modal_box = document.querySelector(targetID);
-
-			Array.from(document.body.children).forEach(child =>{
-				if (child != modal_box)
-					child.inert = true;
-			})
 			modal = target.find('.modal');
 			header = target.find('.modal-header');
 			close = target.find('.close');
 			body = target.find('.modal-body');
 			modalWrapper = target.find('.modal-wrapper>div');
 
-			overlay.removeClass('display-none');
 			target.removeClass('display-none');
 			target.addClass('modal-opened');
 			disableBodyScroll();
@@ -112,12 +108,6 @@ function disableBodyScroll(){
 					target.removeClass('modal-opened');
 					enableBodyScroll();
 					stoplistener();
-					var modal_box = document.querySelector(targetID);
-
-					Array.from(document.body.children).forEach(child =>{
-						if (child != modal_box)
-							child.inert = false;
-					})
 				}
 			}
 
