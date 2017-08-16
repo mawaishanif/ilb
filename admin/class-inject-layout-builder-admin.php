@@ -63,6 +63,8 @@ class Inject_Layout_Builder_Admin {
 
 		add_action( 'wp_ajax_builder_admin_layout', array( $this, 'builder_admin_layout') );
 
+		add_action( 'wp_ajax_shortcode_form_layout', array( $this, 'shortcode_form_layout') );
+
 	}
 
 	public function load_assets($hook) {

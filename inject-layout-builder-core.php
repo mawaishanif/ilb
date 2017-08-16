@@ -20,7 +20,7 @@
  * Author URI:        http://injectThemes.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       Grime_Core
+ * Text Domain:       inject_layout_builder
  * Domain Path:       /languages
  */
 
@@ -35,7 +35,7 @@ define('ILB_DIR_URL', plugin_dir_url( __FILE__ ));
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php
  */
-function activate_grime_core() {
+function activate_inject_layout_builder() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-grime-core-activator.php';
 	// Required the activator file but done nothing with it maybe I can use in future. Lete see.
 }
@@ -44,14 +44,14 @@ function activate_grime_core() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-plugin-name-deactivator.php
  */
-function deactivate_plugin_name() {
+function deactivate_inject_layout_builder() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-grime-core-deactivator.php';
 	// Required the de-activator file but done nothing with it maybe I can use in future. Lete see.
 }
 
 // Hooks for registering activate and deactivate funtion when activating the plugin.
-// register_activation_hook( __FILE__, 'activate_grime_core' );
-// register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
+// register_activation_hook( __FILE__, 'activate_inject_layout_builder' );
+// register_deactivation_hook( __FILE__, 'deactivate_inject_layout_builder' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -68,13 +68,13 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-inject-layout-builder-core
  *
  * @since    1.0.0
  */
-function run_plugin_name() {
+function run_inject_layout_builder() {
 
 	$plugin = new Inject_Layout_Builder_Core();
 	$plugin->load_plugin_admin();
 	$plugin->load_public();
 }
-run_plugin_name();
+run_inject_layout_builder();
 
 // load_plugin_textdomain('dnd-shortcodes', false, dirname(plugin_basename( __FILE__ )).'/languages/');
 
